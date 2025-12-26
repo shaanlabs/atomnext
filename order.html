@@ -17,6 +17,7 @@
     <title>Request a Service | AtomNext</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service-dropdown.css">
     <style>
         body {
             margin: 0;
@@ -381,49 +382,14 @@
                 </div>
 
                 <div class="form-group" id="serviceGroup">
-                    <label for="service">
+                    <label for="service-search-input">
                         Service Type<span class="required">*</span>
                     </label>
-                    <select id="service" name="service" required aria-required="true">
-                        <option value="">-- Select a service --</option>
-                        <optgroup label="Web & Mobile">
-                            <option value="web-development">Web Development</option>
-                            <option value="mobile-app">Mobile App Development</option>
-                        </optgroup>
-                        <optgroup label="AI & Automation">
-                            <option value="ai-solutions">AI Solutions & Chatbots</option>
-                            <option value="n8n-workflows">🔥 n8n Workflow Automation</option>
-                            <option value="process-automation">Business Process Automation</option>
-                            <option value="no-code-automation">No-code/Low-code Automation</option>
-                        </optgroup>
-                        <optgroup label="Enterprise Systems">
-                            <option value="erpnext">ERPNext Implementation</option>
-                            <option value="erp-system">Custom ERP Development</option>
-                            <option value="hrms">HRMS Solution</option>
-                            <option value="crm">CRM Solution</option>
-                            <option value="business-mgmt">Business Management Software</option>
-                        </optgroup>
-                        <optgroup label="SaaS & Cloud">
-                            <option value="saas-product">SaaS Product Development</option>
-                            <option value="custom-saas">Custom SaaS Platform</option>
-                            <option value="cloud-devops">Cloud Infrastructure & DevOps</option>
-                            <option value="saas-consulting">SaaS Architecture Consulting</option>
-                        </optgroup>
-                        <optgroup label="Integrations & APIs">
-                            <option value="api-integrations">API Integrations & Middleware</option>
-                            <option value="system-integrations">System Integrations (ERP ↔ CRM)</option>
-                            <option value="data-pipelines">Data Pipelines & Analytics</option>
-                        </optgroup>
-                        <optgroup label="Optimization & Support">
-                            <option value="product-scaling">Product Scaling & Optimization</option>
-                            <option value="security-performance">Security & Performance Optimization</option>
-                            <option value="maintenance">Software Maintenance & Upgrades</option>
-                        </optgroup>
-                        <optgroup label="Growth & Marketing">
-                            <option value="digital-marketing">Digital Marketing</option>
-                            <option value="seo-consulting">SEO & Growth Consulting</option>
-                        </optgroup>
-                    </select>
+                    <div class="service-search-container" id="service-search-container">
+                        <input type="text" id="service-search-input" placeholder="Search or select a service..."
+                            autocomplete="off" class="service-search-input" />
+                        <input type="hidden" id="service-type" name="service" required />
+                    </div>
                     <div class="error-message" id="serviceError">Please select a service</div>
                 </div>
 
@@ -611,6 +577,7 @@
             });
         });
     </script>
+    <script src="service-dropdown.js"></script>
 </body>
 
 </html>

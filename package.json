@@ -1,0 +1,16 @@
+{
+    "name": "atomnext-website",
+    "version": "1.0.0",
+    "description": "AtomNext - SaaS, AI & Automation Services Platform",
+    "dependencies": {
+        "resend": "^3.0.0"
+    },
+    "devDependencies": {
+        "netlify-cli": "^23.13.0"
+    },
+    "scripts": {
+        "start": "python -m http.server 8000",
+        "dev": "netlify dev",
+        "build": "echo 'Static site - no build needed'"
+    }
+}
