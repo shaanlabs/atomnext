@@ -1,16 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     console.log("Atom Next AI website loaded!");
     // Initialize hero section animations
     const heroSection = document.querySelector('.hero');
     const sphere = document.querySelector('.sphere-3d');
     const techCards = document.querySelectorAll('.tech-card');
     const heroContent = document.querySelector('.hero-content');
-    
+
     // Animate hero content on load
     if (heroContent) {
         heroContent.style.opacity = '0';
         heroContent.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             heroContent.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             heroContent.style.opacity = '1';
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     techCards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             card.style.opacity = '1';
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const speed = card.getAttribute('data-speed') || 0.1;
             const x = (mouseX - 0.5) * speed * 100;
             const y = (mouseY - 0.5) * speed * 100;
-            
+
             card.style.transform = `translate(${x}px, ${y}px)`;
         });
     });
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Navigation scroll effect
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function () {
     const nav = document.querySelector("nav");
     if (nav) {
         nav.classList.toggle("scrolled", window.scrollY > 50);
@@ -110,7 +110,7 @@ function typeEffect() {
 document.addEventListener("DOMContentLoaded", typeEffect);
 
 // Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const navItems = document.querySelector('.nav-items');
     const navLinks = document.querySelectorAll('.nav-items a');
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toggle menu
     if (hamburger && navItems) {
-        hamburger.addEventListener('click', function(e) {
+        hamburger.addEventListener('click', function (e) {
             e.stopPropagation();
             this.classList.toggle('active');
             navItems.classList.toggle('active');
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close menu when clicking a link
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             if (navItems.classList.contains('active')) {
                 navItems.classList.remove('active');
                 hamburger.classList.remove('active');
@@ -138,9 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (navItems.classList.contains('active') && 
-            !e.target.closest('.nav-items') && 
+    document.addEventListener('click', function (e) {
+        if (navItems.classList.contains('active') &&
+            !e.target.closest('.nav-items') &&
             !e.target.closest('.hamburger')) {
             navItems.classList.remove('active');
             hamburger.classList.remove('active');
@@ -149,54 +149,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Prevent clicks inside nav from closing it
-    navItems.addEventListener('click', function(e) {
+    navItems.addEventListener('click', function (e) {
         e.stopPropagation();
     });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Check if user is logged in
-    let isLoggedIn = localStorage.getItem("loggedIn") === "true";
-    
-    const bookCallBtn = document.getElementById("bookCallBtn");
-    const loginPrompt = document.getElementById("loginPrompt");
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
 
-    // Handle button behavior
-    bookCallBtn.addEventListener("click", function (event) {
-        if (!isLoggedIn) {
-            event.preventDefault(); // Stop redirection
-            loginPrompt.classList.remove("hidden"); // Show login prompt
-        } else {
-            window.location.href = "book-call.html"; // Redirect if logged in
-        }
+            // Skip if it's just "#" or if target doesn't exist
+            if (href === '#' || href.length === 1) {
+                e.preventDefault();
+                return;
+            }
+
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Close mobile menu if open
+                if (navItems.classList.contains('active')) {
+                    navItems.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                }
+            }
+        });
     });
 });
 
-function loginUser() {
-    localStorage.setItem("loggedIn", "true"); // Store login state
-    window.location.href = "index.html"; // Redirect to homepage
-}
 
-<button onclick="loginUser()">Login</button>
-localStorage.setItem("loggedIn", "true");
-document.addEventListener("DOMContentLoaded", function () {
-    let isLoggedIn = localStorage.getItem("loggedIn") === "true";
-    const bookCallBtn = document.getElementById("bookCallBtn");
-
-    bookCallBtn.addEventListener("click", function (event) {
-        if (!isLoggedIn) {
-            event.preventDefault();
-            alert("Please log in before booking a call.");
-            // Optionally, redirect to your login page:
-            window.location.href = "login.html";
-        } else {
-            window.location.href = "book-a-call.html";
-        }
-    });
-});
 
 // Chatbot functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const chatbotContainer = document.querySelector('.chatbot-container');
     const chatbotToggle = document.querySelector('.chatbot-toggle');
     const chatbotClose = document.querySelector('.chatbot-close');
@@ -294,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 // Remove typing indicator
                 removeTypingIndicator(typingIndicator);
-                
+
                 // Handle network error
                 addMessage('I apologize, but I\'m having trouble connecting to the server. Please try again later.', 'bot');
                 console.error('Error:', error);

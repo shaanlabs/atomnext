@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Request a custom quote for web development, mobile apps, AI solutions, ERP/ERPNext, HRMS, CRM, SaaS development, and digital marketing services from AtomNext.">
+    <meta name="keywords"
+        content="request service, software development quote, custom software order, ERP implementation, SaaS development, HRMS, CRM, web development quote">
+    <meta name="author" content="AtomNext Solutions">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Request a Service | AtomNext">
+    <meta property="og:description"
+        content="Get a custom quote for your software development, AI, or digital transformation project.">
+    <meta property="og:type" content="website">
+    <title>Request a Service | AtomNext</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .order-nav {
+            background: rgba(20, 30, 48, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 111, 97, 0.2);
+        }
+
+        .order-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #ff6f61;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover,
+        .back-link:focus {
+            color: #ff8a7f;
+            transform: translateX(-5px);
+        }
+
+        /* Order Section */
+        .order-section {
+            text-align: center;
+            padding: 60px 20px 80px;
+            color: white;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .order-section .container {
+            max-width: 750px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .order-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffa07a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .order-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Form Styles */
+        .order-form {
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #ff6f61;
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23ffffff' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            appearance: none;
+        }
+
+        .form-group select option {
+            background: #1a2a3d;
+            color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6f61;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: #ff4444;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6f61 0%, #ff8a7f 100%);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 111, 97, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .submit-btn .btn-text {
+            display: inline-block;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .submit-btn.loading .spinner {
+            display: block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Success/Error Messages */
+        .message-box {
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: flex-start;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .message-box.show {
+            display: flex;
+        }
+
+        .message-box.success {
+            background: rgba(72, 187, 120, 0.15);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            color: #68d391;
+        }
+
+        .message-box.error {
+            background: rgba(245, 101, 101, 0.15);
+            border: 1px solid rgba(245, 101, 101, 0.3);
+            color: #fc8181;
+        }
+
+        .message-box i {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .order-section .container {
+                padding: 30px 20px;
+            }
+
+            .order-section h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="order-nav">
+        <div class="container">
+            <a href="index.html" class="back-link" aria-label="Back to home">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                <i class="fas fa-clipboard-list"></i> Request Service
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="container">
+            <h1>Request a Service</h1>
+            <p>Fill out the form below and we'll get back to you within 24 hours with a custom quote.</p>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="message-box success">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <strong>Request submitted successfully!</strong><br>
+                    Thank you for choosing AtomNext. Our team will review your requirements and contact you within 24
+                    hours.
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="message-box error">
+                <i class="fas fa-exclamation-circle"></i>
+                <div id="errorText">Something went wrong. Please try again.</div>
+            </div>
+
+            <!-- Order Form -->
+            <form id="orderForm" class="order-form" action="https://getform.io/f/aqokmnja" method="POST" novalidate>
+                <input type="hidden" name="_formType" value="service-request">
+
+                <div class="form-row">
+                    <div class="form-group" id="nameGroup">
+                        <label for="name">
+                            Full Name<span class="required">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required
+                            aria-required="true" />
+                        <div class="error-message" id="nameError">Please enter your name</div>
+                    </div>
+
+                    <div class="form-group" id="emailGroup">
+                        <label for="email">
+                            Email Address<span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required
+                            aria-required="true" />
+                        <div class="error-message" id="emailError">Please enter a valid email</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" id="phoneGroup">
+                        <label for="phone">
+                            Phone Number<span class="required">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
+                            aria-required="true" aria-describedby="phoneError" />
+                        <div class="error-message" id="phoneError">Please enter your phone number so we can contact you
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="companyGroup">
+                        <label for="company">
+                            Company Name
+                        </label>
+                        <input type="text" id="company" name="company" placeholder="Your company name" />
+                    </div>
+                </div>
+
+                <div class="form-group" id="serviceGroup">
+                    <label for="service">
+                        Service Type<span class="required">*</span>
+                    </label>
+                    <select id="service" name="service" required aria-required="true">
+                        <option value="">-- Select a service --</option>
+                        <optgroup label="Web & Mobile">
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-app">Mobile App Development</option>
+                        </optgroup>
+                        <optgroup label="AI & Automation">
+                            <option value="ai-solutions">AI Solutions & Chatbots</option>
+                            <option value="n8n-workflows">🔥 n8n Workflow Automation</option>
+                            <option value="process-automation">Business Process Automation</option>
+                            <option value="no-code-automation">No-code/Low-code Automation</option>
+                        </optgroup>
+                        <optgroup label="Enterprise Systems">
+                            <option value="erpnext">ERPNext Implementation</option>
+                            <option value="erp-system">Custom ERP Development</option>
+                            <option value="hrms">HRMS Solution</option>
+                            <option value="crm">CRM Solution</option>
+                            <option value="business-mgmt">Business Management Software</option>
+                        </optgroup>
+                        <optgroup label="SaaS & Cloud">
+                            <option value="saas-product">SaaS Product Development</option>
+                            <option value="custom-saas">Custom SaaS Platform</option>
+                            <option value="cloud-devops">Cloud Infrastructure & DevOps</option>
+                            <option value="saas-consulting">SaaS Architecture Consulting</option>
+                        </optgroup>
+                        <optgroup label="Integrations & APIs">
+                            <option value="api-integrations">API Integrations & Middleware</option>
+                            <option value="system-integrations">System Integrations (ERP ↔ CRM)</option>
+                            <option value="data-pipelines">Data Pipelines & Analytics</option>
+                        </optgroup>
+                        <optgroup label="Optimization & Support">
+                            <option value="product-scaling">Product Scaling & Optimization</option>
+                            <option value="security-performance">Security & Performance Optimization</option>
+                            <option value="maintenance">Software Maintenance & Upgrades</option>
+                        </optgroup>
+                        <optgroup label="Growth & Marketing">
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="seo-consulting">SEO & Growth Consulting</option>
+                        </optgroup>
+                    </select>
+                    <div class="error-message" id="serviceError">Please select a service</div>
+                </div>
+
+                <div class="form-group" id="descriptionGroup">
+                    <label for="description">
+                        Project Description<span class="required">*</span>
+                    </label>
+                    <textarea id="description" name="description" rows="5"
+                        placeholder="Tell us about your project requirements, goals, and any specific features you need..."
+                        required aria-required="true"></textarea>
+                    <div class="error-message" id="descriptionError">Please describe your project</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" id="budgetGroup">
+                        <label for="budget">
+                            Budget Range
+                        </label>
+                        <select id="budget" name="budget">
+                            <option value="">-- Select budget range --</option>
+                            <option value="under-5k">Under $5,000</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k-50k">$25,000 - $50,000</option>
+                            <option value="50k-plus">$50,000+</option>
+                            <option value="discuss">To be discussed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="timelineGroup">
+                        <label for="timeline">
+                            Timeline<span class="required">*</span>
+                        </label>
+                        <select id="timeline" name="timeline" required aria-required="true">
+                            <option value="">-- Select timeline --</option>
+                            <option value="asap">ASAP (< 1 month)</option>
+                            <option value="1-3-months">1-3 months</option>
+                            <option value="3-6-months">3-6 months</option>
+                            <option value="6-plus-months">6+ months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                        <div class="error-message" id="timelineError">Please select a timeline</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">
+                        Additional Notes
+                    </label>
+                    <textarea id="notes" name="notes" rows="3"
+                        placeholder="Any other details we should know..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Submit Request</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('orderForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function validateField(field) {
+                const group = field.closest('.form-group');
+                const value = field.value.trim();
+                let isValid = true;
+                let errorMessage = '';
+
+                if (field.hasAttribute('required') && !value) {
+                    isValid = false;
+                    errorMessage = `This field is required`;
+                } else if (field.type === 'email' && value && !emailRegex.test(value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address';
+                }
+
+                if (!isValid) {
+                    group.classList.add('error');
+                    const errorEl = group.querySelector('.error-message');
+                    if (errorEl) errorEl.textContent = errorMessage;
+                } else {
+                    group.classList.remove('error');
+                }
+
+                return isValid;
+            }
+
+            // Real-time validation
+            const inputs = form.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => validateField(input));
+                input.addEventListener('input', () => {
+                    if (input.closest('.form-group').classList.contains('error')) {
+                        validateField(input);
+                    }
+                });
+            });
+
+            // Form submission
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Hide previous messages
+                successMsg.classList.remove('show');
+                errorMsg.classList.remove('show');
+
+                // Validate all fields
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    const firstError = form.querySelector('.form-group.error');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstError.querySelector('input, select, textarea').focus();
+                    }
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+
+                try {
+                    // Prepare data as JSON
+                    const formData = {
+                        name: form.querySelector('#name').value,
+                        email: form.querySelector('#email').value,
+                        phone: form.querySelector('#phone').value,
+                        company: form.querySelector('#company')?.value || '',
+                        service: form.querySelector('#service-type').value,
+                        description: form.querySelector('#project-details').value,
+                        timeline: form.querySelector('#timeline').value,
+                        budget: form.querySelector('#budget')?.value || ''
+                    };
+
+                    const response = await fetch('/.netlify/functions/request-service', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        // Success
+                        successMsg.classList.add('show');
+                        form.reset();
+
+                        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        setTimeout(() => {
+                            successMsg.classList.remove('show');
+                        }, 10000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    // Error
+                    errorText.textContent = 'Something went wrong. Please try again or contact us directly at contact@atomnext.ai';
+                    errorMsg.classList.add('show');
+                    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    console.error('Form submission error:', error);
+                } finally {
+                    // Reset loading state
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+/* ========================================
+   MOBILE-FIRST REDESIGN
+   ======================================== */
+
+/* Mobile Base Styles (Default <640px) */
+
+/* Navigation - Compact */
+nav {
+    padding: 12px 0 !important;
+}
+
+/* Hero Section - Mobile Optimized */
+.hero {
+    min-height: 100vh;
+    padding: 100px 20px 60px !important;
+}
+
+.hero-content {
+    max-width: 100%;
+    padding: 0 !important;
+}
+
+/* Mobile Typography */
+.hero h1,
+.glowing-text {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+}
+
+.hero-description,
+.hero-content p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.5rem !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Button System - Mobile Stack */
+.cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.btn,
+.primary-btn,
+.secondary-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 14px 24px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.secondary-btn {
+    background: transparent !important;
+    border: 2px solid rgba(255, 111, 97, 0.5) !important;
+}
+
+/* Services - Mobile Stack */
+.service-box {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+}
+
+.service {
+    padding: 24px 20px !important;
+}
+
+.service h3 {
+    font-size: 18px !important;
+}
+
+.service p {
+    font-size: 14px !important;
+}
+
+/* Reduce Effects on Mobile */
+.service,
+.step,
+.member {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.service:hover,
+.step:hover,
+.member:hover {
+    box-shadow: 0 4px 16px rgba(255, 111, 97, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Section Typography */
+h2 {
+    font-size: 26px !important;
+}
+
+h3 {
+    font-size: 18px !important;
+}
+
+/* Tablet Breakpoint (640px+) */
+@media (min-width: 640px) {
+
+    .hero h1,
+    .glowing-text {
+        font-size: 36px !important;
+    }
+
+    .hero-description {
+        font-size: 17px !important;
+    }
+
+    .cta-container {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 16px !important;
+    }
+
+    .btn {
+        width: auto !important;
+        min-width: 180px !important;
+    }
+
+    .service-box {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    h2 {
+        font-size: 32px !important;
+    }
+}
+
+/* Desktop Breakpoint (1024px+) */
+@media (min-width: 1024px) {
+    nav {
+        padding: 16px 0 !important;
+    }
+
+    .hero {
+        padding: 120px 20px 80px !important;
+    }
+
+    .hero h1,
+    .glowing-text {
+        font-size: 48px !important;
+    }
+
+    .hero-description {
+        font-size: 19px !important;
+        max-width: 700px !important;
+    }
+
+    .cta-container {
+        gap: 20px !important;
+    }
+
+    .service-box {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 24px !important;
+    }
+
+    .service {
+        padding: 32px 24px !important;
+    }
+
+    h2 {
+        font-size: 40px !important;
+    }
+
+    /* Restore full effects for desktop */
+    .service,
+    .step,
+    .member {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .service:hover,
+    .step:hover,
+    .member:hover {
+        box-shadow: 0 8px 24px rgba(255, 111, 97, 0.3) !important;
+        transform: translateY(-5px) !important;
+    }
+}

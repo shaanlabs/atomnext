@@ -1,0 +1,8 @@
+{
+  "name": "atomnext-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for AtomNext forms",
+  "dependencies": {
+    "resend": "^3.0.0"
+  }
+}
