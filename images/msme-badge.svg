@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 54" width="100%" height="100%" fill="none">
+  <rect x="1" y="1" width="218" height="52" rx="26" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+  <!-- Seal / Emblem -->
+  <circle cx="27" cy="27" r="16" fill="#F5F5F7" stroke="#0071E3" stroke-width="1.5" />
+  <!-- India tricolor subtle accent / gear -->
+  <circle cx="27" cy="27" r="11" fill="none" stroke="#FF7A00" stroke-width="1.5" stroke-dasharray="2 2" />
+  <circle cx="27" cy="27" r="6" fill="#0071E3" />
+  <path d="M 27 23 L 27 31 M 23 27 L 31 27" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Text -->
+  <text x="52" y="24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="700" fill="#1D1D1F" letter-spacing="0.2">
+    MSME REGISTERED
+  </text>
+  <text x="52" y="38" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9.5" font-weight="500" fill="#86868B">
+    Govt. of India Recognized
+  </text>
+  <!-- Verified checkmark icon -->
+  <circle cx="198" cy="27" r="8" fill="#E8F5E9" />
+  <path d="M 195 27 L 197 29 L 202 24" stroke="#1B5E20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

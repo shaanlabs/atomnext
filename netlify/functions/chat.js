@@ -1,210 +1,191 @@
-const { Resend } = require('resend');
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 const OWNER_EMAIL = process.env.OWNER_EMAIL || 'atomnextai@gmail.com';
 
-// Knowledge base for the chatbot (ported from Flask app.py)
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'X-Content-Type-Options': 'nosniff'
+};
+
+// Modern Knowledge Base for AtomNext AI Assistant (Apple Minimal / MSME Enterprise)
 const KNOWLEDGE_BASE = {
-    greetings: [
-        'hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'
+  greetings: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
+  company: [
+    'atom next', 'atom next solutions', 'atomnext', 'about atom', 'who are you',
+    'company', 'about company', 'about us', 'tell me about atom', 'msme', 'registered', 'udyam'
+  ],
+  services: {
+    automation: [
+      'automation', 'manual work', 'excel', 'repetitive', 'n8n', 'workflow',
+      'tasks', 'process automation', 'spreadsheet'
     ],
-    company: [
-        'atom next', 'atom next solutions', 'atom next ai', 'about atom', 'who are you',
-        'company', 'about company', 'about us', 'tell me about atom'
+    ai_agents: [
+      'ai', 'agent', 'ai agents', 'chatbot', 'whatsapp', 'customer service',
+      'llm', 'support bot', 'autonomous'
     ],
-    services: {
-        web_development: [
-            'web development', 'website', 'web app', 'web application', 'website development',
-            'frontend', 'backend', 'full stack', 'responsive design'
-        ],
-        mobile_apps: [
-            'mobile app', 'mobile application', 'ios', 'android', 'app development',
-            'cross platform', 'react native', 'flutter'
-        ],
-        ai_solutions: [
-            'ai', 'artificial intelligence', 'machine learning', 'ml', 'chatbot',
-            'automation', 'data analytics', 'predictive analytics'
-        ],
-        custom_software: [
-            'custom software', 'software development', 'enterprise software',
-            'business software', 'custom solution'
-        ]
-    },
-    pricing: [
-        'price', 'cost', 'pricing', 'how much', 'budget', 'quote', 'estimate'
+    erp_pos: [
+      'erp', 'erpnext', 'pos', 'billing', 'invoice', 'gst', 'inventory',
+      'accounting', 'retail system'
     ],
-    contact: [
-        'contact', 'reach', 'get in touch', 'email', 'phone', 'address',
-        'location', 'office', 'meet'
+    web_mobile: [
+      'web development', 'mobile app', 'ios', 'android', 'react', 'next.js',
+      'flutter', 'saas', 'application'
     ],
-    process: [
-        'process', 'how it works', 'workflow', 'timeline', 'duration',
-        'steps', 'methodology', 'approach'
+    data_systems: [
+      'data', 'pipeline', 'api', 'integration', 'cloud', 'database', 'backend'
     ]
+  },
+  pricing: ['price', 'cost', 'pricing', 'how much', 'budget', 'quote', 'estimate', 'rate'],
+  contact: ['contact', 'reach', 'get in touch', 'email', 'phone', 'address', 'book', 'call', 'consultation'],
+  process: ['process', 'how it works', 'workflow', 'timeline', 'duration', 'steps', 'methodology', 'architecture']
 };
 
 const RESPONSES = {
-    greeting: [
-        "Hello! 👋 I'm Atom Next AI's assistant. How can I help you today?",
-        "Hi there! 👋 Welcome to Atom Next AI. What can I do for you?",
-        "Hey! 👋 I'm here to help you with any questions about our services."
-    ],
-    company: [
-        `Atom Next Solutions is a cutting-edge technology company founded by Nasheel Damudi, Shaanif Ahmed, and Azhar Ali. We specialize in transforming businesses through innovative technology solutions.
+  greeting: [
+    "Hello! Welcome to AtomNext. We build autonomous business systems, AI agents, and custom software that replace manual work. How can I help you today?",
+    "Hi there! Welcome to AtomNext. Looking to automate business workflows, build custom AI agents, or scale with enterprise ERP/web apps? Ask me anything!"
+  ],
+  company: [
+    `AtomNext Solutions is an officially registered MSME (Micro, Small & Medium Enterprise) recognized by the Government of India. 
 
-Our expertise includes:
-• Web Development
-• Mobile App Development
-• AI Solutions
-• Custom Software Development
+We help modern businesses run smarter by replacing manual work and disconnected spreadsheets with complete, autonomous systems:
+• Repetitive Workflow & Task Automation (n8n, webhook pipelines)
+• 24/7 Custom AI Agents & WhatsApp Assistants
+• Enterprise ERP, POS & Smart Billing Solutions
+• High-Performance Web & Mobile Applications
+• Robust Data Infrastructure & API Orchestration
 
-We're passionate about helping businesses grow through technology and innovation. Our team combines technical expertise with creative problem-solving to deliver exceptional results.`,
+Our motto: "Think Better. Build Better."`,
 
-        `Welcome to Atom Next Solutions! We're a dynamic team of technology experts dedicated to helping businesses succeed in the digital age.
-
-Founded by industry professionals, we offer:
-• Modern Web Solutions
-• Mobile Applications
-• AI Integration
-• Custom Software
-
-Our mission is to empower businesses with technology that drives growth and innovation.`
-    ],
-    web_development: [
-        "We offer comprehensive web development services including responsive websites, web applications, and e-commerce solutions. Our team uses modern technologies like React, Angular, and Node.js to create robust and scalable web solutions.",
-        "Our web development services cover everything from simple websites to complex web applications. We focus on creating user-friendly, responsive, and high-performance solutions tailored to your needs."
-    ],
-    mobile_apps: [
-        "We develop both native and cross-platform mobile applications for iOS and Android. Our mobile solutions are designed to provide excellent user experience and performance across all devices.",
-        "Our mobile app development services include iOS, Android, and cross-platform development using technologies like React Native and Flutter. We ensure your app is fast, secure, and user-friendly."
-    ],
-    ai_solutions: [
-        "We provide cutting-edge AI solutions including chatbots, process automation, and data analytics. Our AI services help businesses streamline operations and make data-driven decisions.",
-        "Our AI solutions range from intelligent chatbots to complex machine learning systems. We help businesses leverage artificial intelligence to improve efficiency and gain competitive advantages."
-    ],
-    custom_software: [
-        "We develop custom software solutions tailored to your specific business needs. Our team creates scalable and maintainable software that helps streamline your operations.",
-        "Our custom software development services focus on creating solutions that perfectly match your business requirements. We ensure high quality, security, and scalability in every project."
-    ],
-    pricing: [
-        "Our pricing varies based on project requirements and scope. Would you like to schedule a consultation to discuss your specific needs and get a detailed quote?",
-        "We provide customized quotes based on your project requirements. Let's schedule a call to understand your needs better and provide an accurate estimate."
-    ],
-    contact: [
-        "You can reach us through our contact form on the website or schedule a consultation call. Would you like me to help you with that?",
-        "We're available through multiple channels. You can contact us via the website, email, or schedule a call. I can help you with any of these options."
-    ],
-    process: [
-        "Our development process includes: 1) Discovery and consultation, 2) Planning and design, 3) Development, 4) Testing, 5) Deployment, and 6) Ongoing support. Would you like to know more about any specific phase?",
-        "We follow a systematic approach: starting with understanding your requirements, creating a detailed plan, developing the solution, thorough testing, and providing ongoing support. Each phase is designed to ensure the best results."
-    ],
-    fallback: [
-        "I'm not sure I understand. Could you please rephrase your question? I can help you with information about our services, pricing, or process.",
-        "I'm still learning! Could you try asking that in a different way? I can tell you about our web development, mobile apps, AI solutions, or custom software services."
-    ]
+    `At AtomNext, we don't just write code — we build dependable, enterprise-grade business systems. Registered under MSME (Govt. of India), we partner with companies to eliminate manual bottlenecks, integrate operations, and automate communication across platforms like WhatsApp and custom portals.`
+  ],
+  automation: [
+    "Many businesses lose 20-40 hours a week on repetitive tasks — updating Excel sheets, copy-pasting data, and manual operations. AtomNext builds event-driven pipelines (using n8n, webhooks, and secure APIs) that execute these tasks automatically and reliably.",
+    "Our automation systems replace manual human data entry with instant sync across your databases, CRM, billing, and inventory. Would you like to estimate your team's monthly hours saved?"
+  ],
+  ai_agents: [
+    "We engineer custom AI agents that perform real business actions: qualifying inbound leads, answering customer questions 24/7 on WhatsApp, booking appointments, and triggering backend actions without human lag.",
+    "Unlike generic chatbots, AtomNext AI agents connect directly to your product catalog, internal database, or ERP to deliver instant, accurate responses with verified context."
+  ],
+  erp_pos: [
+    "We design and deploy modern ERP and ERPNext solutions, point-of-sale (POS) systems, and automated billing software. Features include multi-branch inventory sync, GST e-invoicing, and unified financial reporting.",
+    "Stop juggling disconnected spreadsheets. Our ERP and POS platforms unify purchasing, inventory, sales, and accounts into a single, scalable dashboard."
+  ],
+  web_mobile: [
+    "We engineer production-grade web and mobile applications using modern technologies (React, Next.js, Flutter, Node.js, Python). Our software is fast, responsive, and architected for long-term scalability.",
+    "From high-conversion SaaS portals to iOS and Android applications, we build intuitive digital products that deliver high business ROI."
+  ],
+  data_systems: [
+    "We design real-time data pipelines, API middleware, and secure cloud databases that connect your disparate software tools into one synchronized ecosystem."
+  ],
+  pricing: [
+    "Our solutions are customized to your specific workflow complexity and scale. To get an exact estimate and project timeline within 24 hours, you can fill out our Service Request Wizard or schedule a consultation call.",
+    "We provide transparent, milestone-based pricing with enterprise SLAs and ongoing warranty. Let's schedule a brief 15-minute discovery call to map out your requirements."
+  ],
+  contact: [
+    "You can schedule a consultation call directly with our engineering team at /book-call.html or submit a service inquiry at /order.html. You can also reach us at atomnextai@gmail.com.",
+    "We'd love to connect! You can book a free 20-minute strategy call through our Book a Call page, or tell me your email and requirements right here."
+  ],
+  process: [
+    "Our 5-step engineering process: 1) System Audit & Discovery, 2) Architecture Blueprint, 3) Agile Development, 4) Rigorous QA & Security Testing, 5) Deployment & 24/7 SLA Support.",
+    "We work in rapid, transparent sprints. From initial architecture to production rollout, you have full visibility into every milestone and pipeline test."
+  ]
 };
 
-function getRandomResponse(responses) {
-    return responses[Math.floor(Math.random() * responses.length)];
-}
+function getResponse(userMessage) {
+  const msg = (userMessage || '').toLowerCase();
 
-function getChatResponse(message) {
-    const lowerMessage = message.toLowerCase();
+  if (KNOWLEDGE_BASE.greetings.some(k => msg.includes(k))) {
+    return RESPONSES.greeting[Math.floor(Math.random() * RESPONSES.greeting.length)];
+  }
+  if (KNOWLEDGE_BASE.company.some(k => msg.includes(k))) {
+    return RESPONSES.company[Math.floor(Math.random() * RESPONSES.company.length)];
+  }
+  if (KNOWLEDGE_BASE.services.automation.some(k => msg.includes(k))) {
+    return RESPONSES.automation[Math.floor(Math.random() * RESPONSES.automation.length)];
+  }
+  if (KNOWLEDGE_BASE.services.ai_agents.some(k => msg.includes(k))) {
+    return RESPONSES.ai_agents[Math.floor(Math.random() * RESPONSES.ai_agents.length)];
+  }
+  if (KNOWLEDGE_BASE.services.erp_pos.some(k => msg.includes(k))) {
+    return RESPONSES.erp_pos[Math.floor(Math.random() * RESPONSES.erp_pos.length)];
+  }
+  if (KNOWLEDGE_BASE.services.web_mobile.some(k => msg.includes(k))) {
+    return RESPONSES.web_mobile[Math.floor(Math.random() * RESPONSES.web_mobile.length)];
+  }
+  if (KNOWLEDGE_BASE.pricing.some(k => msg.includes(k))) {
+    return RESPONSES.pricing[Math.floor(Math.random() * RESPONSES.pricing.length)];
+  }
+  if (KNOWLEDGE_BASE.contact.some(k => msg.includes(k))) {
+    return RESPONSES.contact[Math.floor(Math.random() * RESPONSES.contact.length)];
+  }
+  if (KNOWLEDGE_BASE.process.some(k => msg.includes(k))) {
+    return RESPONSES.process[Math.floor(Math.random() * RESPONSES.process.length)];
+  }
 
-    // Check for greetings
-    if (KNOWLEDGE_BASE.greetings.some(greeting => lowerMessage.includes(greeting))) {
-        return { response: getRandomResponse(RESPONSES.greeting), status: 'success' };
-    }
-
-    // Check for company information
-    if (KNOWLEDGE_BASE.company.some(term => lowerMessage.includes(term))) {
-        return { response: getRandomResponse(RESPONSES.company), status: 'success' };
-    }
-
-    // Check for services
-    for (const [service, keywords] of Object.entries(KNOWLEDGE_BASE.services)) {
-        if (keywords.some(keyword => lowerMessage.includes(keyword))) {
-            return { response: getRandomResponse(RESPONSES[service]), status: 'success' };
-        }
-    }
-
-    // Check for pricing
-    if (KNOWLEDGE_BASE.pricing.some(term => lowerMessage.includes(term))) {
-        return { response: getRandomResponse(RESPONSES.pricing), status: 'success' };
-    }
-
-    // Check for contact
-    if (KNOWLEDGE_BASE.contact.some(term => lowerMessage.includes(term))) {
-        return { response: getRandomResponse(RESPONSES.contact), status: 'success' };
-    }
-
-    // Check for process
-    if (KNOWLEDGE_BASE.process.some(term => lowerMessage.includes(term))) {
-        return { response: getRandomResponse(RESPONSES.process), status: 'success' };
-    }
-
-    // Fallback response
-    return { response: getRandomResponse(RESPONSES.fallback), status: 'success' };
+  return "At AtomNext, we help businesses run smarter by replacing manual work with complete automated business systems (AI agents, n8n workflows, ERP/POS, and web/mobile apps). Would you like to schedule a call or request a custom proposal?";
 }
 
 exports.handler = async (event) => {
-    // Only allow POST
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({
-                response: 'Method not allowed',
-                status: 'error'
-            })
-        };
-    }
+  // Handle CORS Preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 204,
+      headers: CORS_HEADERS,
+      body: ''
+    };
+  }
 
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ success: false, error: 'Method not allowed' })
+    };
+  }
+
+  // Security: Payload size validation
+  if (!event.body || event.body.length > 10 * 1024) {
+    return {
+      statusCode: 413,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ success: false, error: 'Payload too large' })
+    };
+  }
+
+  try {
+    let data;
     try {
-        const data = JSON.parse(event.body);
-        const userMessage = data.message || '';
-
-        if (!userMessage) {
-            return {
-                statusCode: 400,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                body: JSON.stringify({
-                    response: 'Please provide a message.',
-                    status: 'error'
-                })
-            };
-        }
-
-        const response = getChatResponse(userMessage);
-
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify(response)
-        };
-
-    } catch (error) {
-        console.error('Chat error:', error);
-        return {
-            statusCode: 500,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({
-                response: 'I apologize, but I encountered an error. Please try again.',
-                status: 'error',
-                error: error.message
-            })
-        };
+      data = JSON.parse(event.body);
+    } catch {
+      return {
+        statusCode: 400,
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ success: false, error: 'Invalid JSON payload' })
+      };
     }
+
+    // Security: Truncate input string to 500 characters
+    const userMessage = (typeof data.message === 'string' ? data.message : '').slice(0, 500);
+    const botResponse = getResponse(userMessage);
+
+    return {
+      statusCode: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        success: true,
+        response: botResponse
+      })
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        success: false,
+        error: 'Failed to process message',
+        response: "At AtomNext, we build powerful business automation systems, custom AI agents, and enterprise ERP solutions. How can we help you?"
+      })
+    };
+  }
 };

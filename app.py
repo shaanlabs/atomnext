@@ -1,164 +1,107 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import random
 
 app = Flask(__name__)
-CORS(app)
 
-# Knowledge base for the chatbot
+# Security: Limit maximum request size to 100KB to prevent DoS
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024
+
+# Security: Configure CORS
+CORS(app, resources={r"/api/*": {"origins": "*"}}, methods=["POST", "OPTIONS"])
+
 KNOWLEDGE_BASE = {
-    'greetings': [
-        'hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'
-    ],
+    'greetings': ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
     'company': [
-        'atom next', 'atom next solutions', 'atom next ai', 'about atom', 'who are you',
-        'company', 'about company', 'about us', 'tell me about atom'
+        'atom next', 'atom next solutions', 'atomnext', 'about atom', 'who are you',
+        'company', 'about company', 'about us', 'msme', 'registered', 'udyam'
     ],
     'services': {
-        'web_development': [
-            'web development', 'website', 'web app', 'web application', 'website development',
-            'frontend', 'backend', 'full stack', 'responsive design'
-        ],
-        'mobile_apps': [
-            'mobile app', 'mobile application', 'ios', 'android', 'app development',
-            'cross platform', 'react native', 'flutter'
-        ],
-        'ai_solutions': [
-            'ai', 'artificial intelligence', 'machine learning', 'ml', 'chatbot',
-            'automation', 'data analytics', 'predictive analytics'
-        ],
-        'custom_software': [
-            'custom software', 'software development', 'enterprise software',
-            'business software', 'custom solution'
-        ]
+        'automation': ['automation', 'excel', 'repetitive', 'n8n', 'workflow', 'manual work', 'spreadsheet'],
+        'ai_agents': ['ai', 'agent', 'chatbot', 'whatsapp', 'customer service', 'support', 'autonomous'],
+        'erp_pos': ['erp', 'erpnext', 'pos', 'billing', 'invoice', 'gst', 'inventory'],
+        'web_mobile': ['web development', 'mobile app', 'ios', 'android', 'react', 'flutter', 'saas'],
+        'data_systems': ['data', 'pipeline', 'api', 'integration', 'cloud', 'database']
     },
-    'pricing': [
-        'price', 'cost', 'pricing', 'how much', 'budget', 'quote', 'estimate'
-    ],
-    'contact': [
-        'contact', 'reach', 'get in touch', 'email', 'phone', 'address',
-        'location', 'office', 'meet'
-    ],
-    'process': [
-        'process', 'how it works', 'workflow', 'timeline', 'duration',
-        'steps', 'methodology', 'approach'
-    ]
+    'pricing': ['price', 'cost', 'pricing', 'how much', 'budget', 'quote', 'estimate'],
+    'contact': ['contact', 'reach', 'get in touch', 'email', 'phone', 'address', 'book', 'call'],
+    'process': ['process', 'how it works', 'workflow', 'timeline', 'duration', 'steps']
 }
 
-# Responses for different categories
 RESPONSES = {
     'greeting': [
-        "Hello! 👋 I'm Atom Next AI's assistant. How can I help you today?",
-        "Hi there! 👋 Welcome to Atom Next AI. What can I do for you?",
-        "Hey! 👋 I'm here to help you with any questions about our services."
+        "Hello! 👋 Welcome to AtomNext. We build autonomous business systems, AI agents, and enterprise software that eliminate manual work. How can I help you?",
+        "Hi there! Welcome to AtomNext. How can we help automate your business operations today?"
     ],
     'company': [
-        """Atom Next Solutions is a cutting-edge technology company founded by Nasheel Damudi, Shaanif Ahmed, and Azhar Ali. We specialize in transforming businesses through innovative technology solutions.
+        """AtomNext Solutions is an officially registered MSME (Govt. of India) specializing in replacing manual, repetitive work with intelligent business systems.
 
-Our expertise includes:
-• Web Development
-• Mobile App Development
-• AI Solutions
-• Custom Software Development
+Our Core Offerings:
+• Repetitive Workflow & Task Automation (n8n, webhooks, data pipelines)
+• 24/7 Custom AI Agents & WhatsApp Multi-Channel Bots
+• Enterprise ERP, POS & Smart Billing Solutions
+• High-Performance Web & Mobile Applications
+• Cloud Systems & API Integrations
 
-We're passionate about helping businesses grow through technology and innovation. Our team combines technical expertise with creative problem-solving to deliver exceptional results.""",
-        
-        """Welcome to Atom Next Solutions! We're a dynamic team of technology experts dedicated to helping businesses succeed in the digital age.
-
-Founded by industry professionals, we offer:
-• Modern Web Solutions
-• Mobile Applications
-• AI Integration
-• Custom Software
-
-Our mission is to empower businesses with technology that drives growth and innovation."""
+"Think Better. Build Better." We build systems your business can depend on."""
     ],
-    'web_development': [
-        "We offer comprehensive web development services including responsive websites, web applications, and e-commerce solutions. Our team uses modern technologies like React, Angular, and Node.js to create robust and scalable web solutions.",
-        "Our web development services cover everything from simple websites to complex web applications. We focus on creating user-friendly, responsive, and high-performance solutions tailored to your needs."
+    'automation': [
+        "We help businesses replace manual Excel data entry, copy-pasting, and repetitive tasks with reliable automated pipelines and n8n workflows that save 400+ hours every month."
     ],
-    'mobile_apps': [
-        "We develop both native and cross-platform mobile applications for iOS and Android. Our mobile solutions are designed to provide excellent user experience and performance across all devices.",
-        "Our mobile app development services include iOS, Android, and cross-platform development using technologies like React Native and Flutter. We ensure your app is fast, secure, and user-friendly."
+    'ai_agents': [
+        "We build custom AI agents that handle customer conversations 24/7 across WhatsApp and web portals, qualify leads, and connect directly to your databases."
     ],
-    'ai_solutions': [
-        "We provide cutting-edge AI solutions including chatbots, process automation, and data analytics. Our AI services help businesses streamline operations and make data-driven decisions.",
-        "Our AI solutions range from intelligent chatbots to complex machine learning systems. We help businesses leverage artificial intelligence to improve efficiency and gain competitive advantages."
+    'erp_pos': [
+        "We provide custom ERP systems, ERPNext implementations, multi-branch POS, and automated GST billing to unify your entire inventory and accounting."
     ],
-    'custom_software': [
-        "We develop custom software solutions tailored to your specific business needs. Our team creates scalable and maintainable software that helps streamline your operations.",
-        "Our custom software development services focus on creating solutions that perfectly match your business requirements. We ensure high quality, security, and scalability in every project."
+    'web_mobile': [
+        "We build scalable web platforms and native/cross-platform mobile apps using React, Next.js, Flutter, and Node.js."
     ],
     'pricing': [
-        "Our pricing varies based on project requirements and scope. Would you like to schedule a consultation to discuss your specific needs and get a detailed quote?",
-        "We provide customized quotes based on your project requirements. Let's schedule a call to understand your needs better and provide an accurate estimate."
+        "Pricing is milestone-based and tailored to your project requirements. You can submit a project scope on our Request Service page or schedule a consultation call to get a proposal within 24 hours."
     ],
     'contact': [
-        "You can reach us through our contact form on the website or schedule a consultation call. Would you like me to help you with that?",
-        "We're available through multiple channels. You can contact us via the website, email, or schedule a call. I can help you with any of these options."
+        "You can schedule a consultation call on our Book a Call page (/book-call.html) or email us directly at atomnextai@gmail.com."
     ],
     'process': [
-        "Our development process includes: 1) Discovery and consultation, 2) Planning and design, 3) Development, 4) Testing, 5) Deployment, and 6) Ongoing support. Would you like to know more about any specific phase?",
-        "We follow a systematic approach: starting with understanding your requirements, creating a detailed plan, developing the solution, thorough testing, and providing ongoing support. Each phase is designed to ensure the best results."
-    ],
-    'fallback': [
-        "I'm not sure I understand. Could you please rephrase your question? I can help you with information about our services, pricing, or process.",
-        "I'm still learning! Could you try asking that in a different way? I can tell you about our web development, mobile apps, AI solutions, or custom software services."
+        "Our process includes: 1) System Audit & Discovery, 2) Architecture Blueprint, 3) Agile Development, 4) Rigorous QA & Security Testing, and 5) Deployment & 24/7 SLA Support."
     ]
 }
 
-def get_response(message):
-    message = message.lower()
+def get_response(msg):
+    msg = (msg or '').lower()[:500]
+    for cat, keywords in KNOWLEDGE_BASE['services'].items():
+        if any(k in msg for k in keywords):
+            return random.choice(RESPONSES.get(cat, RESPONSES['automation']))
+    if any(k in msg for k in KNOWLEDGE_BASE['greetings']):
+        return random.choice(RESPONSES['greeting'])
+    if any(k in msg for k in KNOWLEDGE_BASE['company']):
+        return random.choice(RESPONSES['company'])
+    if any(k in msg for k in KNOWLEDGE_BASE['pricing']):
+        return random.choice(RESPONSES['pricing'])
+    if any(k in msg for k in KNOWLEDGE_BASE['contact']):
+        return random.choice(RESPONSES['contact'])
+    if any(k in msg for k in KNOWLEDGE_BASE['process']):
+        return random.choice(RESPONSES['process'])
     
-    # Check for greetings
-    if any(greeting in message for greeting in KNOWLEDGE_BASE['greetings']):
-        return {'response': random.choice(RESPONSES['greeting']), 'status': 'success'}
-    
-    # Check for company information
-    if any(term in message for term in KNOWLEDGE_BASE['company']):
-        return {'response': random.choice(RESPONSES['company']), 'status': 'success'}
-    
-    # Check for services
-    for service, keywords in KNOWLEDGE_BASE['services'].items():
-        if any(keyword in message for keyword in keywords):
-            return {'response': random.choice(RESPONSES[service]), 'status': 'success'}
-    
-    # Check for pricing
-    if any(term in message for term in KNOWLEDGE_BASE['pricing']):
-        return {'response': random.choice(RESPONSES['pricing']), 'status': 'success'}
-    
-    # Check for contact
-    if any(term in message for term in KNOWLEDGE_BASE['contact']):
-        return {'response': random.choice(RESPONSES['contact']), 'status': 'success'}
-    
-    # Check for process
-    if any(term in message for term in KNOWLEDGE_BASE['process']):
-        return {'response': random.choice(RESPONSES['process']), 'status': 'success'}
-    
-    # Fallback response
-    return {'response': random.choice(RESPONSES['fallback']), 'status': 'success'}
+    return "At AtomNext, we help businesses run smarter by replacing manual work with complete automated business systems (AI agents, n8n workflows, ERP/POS, and web/mobile apps). How can we assist you?"
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    try:
-        data = request.json
-        user_message = data.get('message', '')
-        
-        if not user_message:
-            return jsonify({
-                'response': 'Please provide a message.',
-                'status': 'error'
-            }), 400
-        
-        response = get_response(user_message)
-        return jsonify(response)
-    
-    except Exception as e:
-        return jsonify({
-            'response': 'I apologize, but I encountered an error. Please try again.',
-            'status': 'error',
-            'error': str(e)
-        }), 500
+    data = request.get_json(silent=True) or {}
+    message = str(data.get('message', ''))[:500]
+    return jsonify({'success': True, 'response': get_response(message)})
+
+# Security: Add security headers to Flask responses
+@app.after_request
+def set_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    return response
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000) 
+    # Security: Default to debug=False to avoid exposing Werkzeug debugger in production
+    is_debug = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    app.run(port=5000, debug=is_debug)

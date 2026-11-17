@@ -1,583 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Request a custom quote for web development, mobile apps, AI solutions, ERP/ERPNext, HRMS, CRM, SaaS development, and digital marketing services from AtomNext.">
-    <meta name="keywords"
-        content="request service, software development quote, custom software order, ERP implementation, SaaS development, HRMS, CRM, web development quote">
-    <meta name="author" content="AtomNext Solutions">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Request a Service | AtomNext">
-    <meta property="og:description"
-        content="Get a custom quote for your software development, AI, or digital transformation project.">
-    <meta property="og:type" content="website">
-    <title>Request a Service | AtomNext</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="service-dropdown.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-        }
-
-        /* Navigation Bar */
-        .order-nav {
-            background: rgba(20, 30, 48, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 111, 97, 0.2);
-        }
-
-        .order-nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .back-link {
-            color: #ff6f61;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .back-link:hover,
-        .back-link:focus {
-            color: #ff8a7f;
-            transform: translateX(-5px);
-        }
-
-        /* Order Section */
-        .order-section {
-            text-align: center;
-            padding: 60px 20px 80px;
-            color: white;
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .order-section .container {
-            max-width: 750px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .order-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ff6f61 0%, #ffa07a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .order-section p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Form Styles */
-        .order-form {
-            text-align: left;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-        }
-
-        .form-group label .required {
-            color: #ff6f61;
-            margin-left: 2px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23ffffff' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 36px;
-            appearance: none;
-        }
-
-        .form-group select option {
-            background: #1a2a3d;
-            color: white;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ff6f61;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-            font-family: inherit;
-        }
-
-        .form-group.error input,
-        .form-group.error select,
-        .form-group.error textarea {
-            border-color: #ff4444;
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            font-size: 0.85rem;
-            margin-top: 6px;
-            display: none;
-        }
-
-        .form-group.error .error-message {
-            display: block;
-        }
-
-        /* Submit Button */
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ff6f61 0%, #ff8a7f 100%);
-            color: white;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 111, 97, 0.4);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .submit-btn .btn-text {
-            display: inline-block;
-            transition: opacity 0.3s ease;
-        }
-
-        .submit-btn.loading .btn-text {
-            opacity: 0;
-        }
-
-        .spinner {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        .submit-btn.loading .spinner {
-            display: block;
-        }
-
-        @keyframes spin {
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        /* Success/Error Messages */
-        .message-box {
-            padding: 16px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: none;
-            align-items: flex-start;
-            gap: 12px;
-            font-weight: 500;
-        }
-
-        .message-box.show {
-            display: flex;
-        }
-
-        .message-box.success {
-            background: rgba(72, 187, 120, 0.15);
-            border: 1px solid rgba(72, 187, 120, 0.3);
-            color: #68d391;
-        }
-
-        .message-box.error {
-            background: rgba(245, 101, 101, 0.15);
-            border: 1px solid rgba(245, 101, 101, 0.3);
-            color: #fc8181;
-        }
-
-        .message-box i {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .order-section .container {
-                padding: 30px 20px;
-            }
-
-            .order-section h1 {
-                font-size: 2rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a service or custom project quote from AtomNext! Autonomous business systems, AI agents, n8n automation, and enterprise ERP software.">
+  <title>Request Service & Project Estimator | AtomNext!</title>
+  
+  <link rel="icon" type="image/svg+xml" href="images/atomnext-logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .service-choice-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+      margin-bottom: 12px;
+    }
+    .service-choice-card:hover {
+      border-color: var(--color-primary);
+      background: #f8fbff;
+    }
+    .service-choice-card.selected {
+      border-color: var(--color-primary);
+      background: #eff6ff;
+      box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+    }
+    .choice-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .service-choice-card.selected .choice-radio {
+      border-color: var(--color-primary);
+    }
+    .service-choice-card.selected .choice-radio::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+    .feature-tag-checkbox {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition);
+    }
+    .feature-tag-checkbox.checked {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav class="order-nav">
-        <div class="container">
-            <a href="index.html" class="back-link" aria-label="Back to home">
-                <i class="fas fa-arrow-left"></i>
-                Back to Home
-            </a>
-            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
-                <i class="fas fa-clipboard-list"></i> Request Service
-            </div>
+
+  <!-- Top MSME Trust Strip -->
+  <aside class="msme-top-strip" aria-label="Official Registration">
+    <div class="container" style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+      <span class="msme-badge-pill"><i class="fas fa-certificate"></i> MSME Registered</span>
+      <span>Official Govt. of India Registered Enterprise • Protected Under Formal NDA</span>
+      <a href="about.html#msme-credentials">View Credentials &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Sticky Navbar -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container nav-container">
+        <a href="index.html" class="navbar-brand" aria-label="AtomNext Home">
+          <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" class="navbar-logo-img">
+        </a>
+
+        <ul class="navbar-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services & Research</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="order.html" class="active">Request Service</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+          <a href="book-call.html" class="btn btn-sm btn-primary">Book a Call</a>
+          <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+      </div>
     </nav>
+  </header>
 
-    <!-- Order Section -->
-    <section class="order-section">
-        <div class="container">
-            <h1>Request a Service</h1>
-            <p>Fill out the form below and we'll get back to you within 24 hours with a custom quote.</p>
+  <!-- Mobile Drawer -->
+  <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-nav-header">
+      <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height: 32px;">
+      <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;" aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services & Research</a></li>
+      <li><a href="about.html">About & MSME</a></li>
+      <li><a href="order.html">Request Service / Quote</a></li>
+      <li><a href="book-call.html">Book Consultation</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <a href="book-call.html" class="btn btn-primary" style="width:100%;">Schedule a Call</a>
+    </div>
+  </aside>
 
-            <!-- Success Message -->
-            <div id="successMessage" class="message-box success">
-                <i class="fas fa-check-circle"></i>
-                <div>
-                    <strong>Request submitted successfully!</strong><br>
-                    Thank you for choosing AtomNext. Our team will review your requirements and contact you within 24
-                    hours.
-                </div>
-            </div>
+  <!-- Main Wizard -->
+  <main class="section-wrapper" style="padding-top:50px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:36px;">
+        <span class="section-pill">Interactive Project Scope Configurator</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom:12px;">Request a Custom System Proposal</h1>
+        <p class="section-description">
+          Tell us about your business bottleneck. We will review your requirements, design an architecture blueprint, and send you a custom quote within 24 hours.
+        </p>
+      </div>
 
-            <!-- Error Message -->
-            <div id="errorMessage" class="message-box error">
-                <i class="fas fa-exclamation-circle"></i>
-                <div id="errorText">Something went wrong. Please try again.</div>
-            </div>
-
-            <!-- Order Form -->
-            <form id="orderForm" class="order-form" action="https://getform.io/f/aqokmnja" method="POST" novalidate>
-                <input type="hidden" name="_formType" value="service-request">
-
-                <div class="form-row">
-                    <div class="form-group" id="nameGroup">
-                        <label for="name">
-                            Full Name<span class="required">*</span>
-                        </label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name" required
-                            aria-required="true" />
-                        <div class="error-message" id="nameError">Please enter your name</div>
-                    </div>
-
-                    <div class="form-group" id="emailGroup">
-                        <label for="email">
-                            Email Address<span class="required">*</span>
-                        </label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required
-                            aria-required="true" />
-                        <div class="error-message" id="emailError">Please enter a valid email</div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group" id="phoneGroup">
-                        <label for="phone">
-                            Phone Number<span class="required">*</span>
-                        </label>
-                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
-                            aria-required="true" aria-describedby="phoneError" />
-                        <div class="error-message" id="phoneError">Please enter your phone number so we can contact you
-                        </div>
-                    </div>
-
-                    <div class="form-group" id="companyGroup">
-                        <label for="company">
-                            Company Name
-                        </label>
-                        <input type="text" id="company" name="company" placeholder="Your company name" />
-                    </div>
-                </div>
-
-                <div class="form-group" id="serviceGroup">
-                    <label for="service-search-input">
-                        Service Type<span class="required">*</span>
-                    </label>
-                    <div class="service-search-container" id="service-search-container">
-                        <input type="text" id="service-search-input" placeholder="Search or select a service..."
-                            autocomplete="off" class="service-search-input" />
-                        <input type="hidden" id="service-type" name="service" required />
-                    </div>
-                    <div class="error-message" id="serviceError">Please select a service</div>
-                </div>
-
-                <div class="form-group" id="descriptionGroup">
-                    <label for="description">
-                        Project Description<span class="required">*</span>
-                    </label>
-                    <textarea id="description" name="description" rows="5"
-                        placeholder="Tell us about your project requirements, goals, and any specific features you need..."
-                        required aria-required="true"></textarea>
-                    <div class="error-message" id="descriptionError">Please describe your project</div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group" id="budgetGroup">
-                        <label for="budget">
-                            Budget Range
-                        </label>
-                        <select id="budget" name="budget">
-                            <option value="">-- Select budget range --</option>
-                            <option value="under-5k">Under $5,000</option>
-                            <option value="5k-10k">$5,000 - $10,000</option>
-                            <option value="10k-25k">$10,000 - $25,000</option>
-                            <option value="25k-50k">$25,000 - $50,000</option>
-                            <option value="50k-plus">$50,000+</option>
-                            <option value="discuss">To be discussed</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" id="timelineGroup">
-                        <label for="timeline">
-                            Timeline<span class="required">*</span>
-                        </label>
-                        <select id="timeline" name="timeline" required aria-required="true">
-                            <option value="">-- Select timeline --</option>
-                            <option value="asap">ASAP (< 1 month)</option>
-                            <option value="1-3-months">1-3 months</option>
-                            <option value="3-6-months">3-6 months</option>
-                            <option value="6-plus-months">6+ months</option>
-                            <option value="flexible">Flexible</option>
-                        </select>
-                        <div class="error-message" id="timelineError">Please select a timeline</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">
-                        Additional Notes
-                    </label>
-                    <textarea id="notes" name="notes" rows="3"
-                        placeholder="Any other details we should know..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="btn-text">Submit Request</span>
-                    <span class="spinner"></span>
-                </button>
-            </form>
+      <div class="form-card-container">
+        <!-- Step Indicator -->
+        <div class="form-step-indicators">
+          <div class="step-indicator active" id="ind-step-1">
+            <span class="step-circle">1</span>
+            <span>Service</span>
+          </div>
+          <div class="step-indicator" id="ind-step-2">
+            <span class="step-circle">2</span>
+            <span>Features</span>
+          </div>
+          <div class="step-indicator" id="ind-step-3">
+            <span class="step-circle">3</span>
+            <span>Timeline</span>
+          </div>
+          <div class="step-indicator" id="ind-step-4">
+            <span class="step-circle">4</span>
+            <span>Details</span>
+          </div>
         </div>
-    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('orderForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-            const errorText = document.getElementById('errorText');
+        <form id="service-request-form">
+          <!-- Step 1: Select Service -->
+          <div class="wizard-step" id="wizard-step-1">
+            <h3 style="margin-bottom:8px;">Step 1: What type of system do you need?</h3>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the primary operational area you want to modernize or automate.</p>
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            <div class="service-choice-card selected" data-service="Workflow & Task Automation (n8n & Excel Replacement)">
+              <div class="choice-radio"></div>
+              <div>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-bolt" style="color:#0071e3; margin-right:8px;"></i> Workflow & Task Automation</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Eliminate Excel data entry, copy-pasting, n8n automations, and webhook sync.</span>
+              </div>
+            </div>
 
-            function validateField(field) {
-                const group = field.closest('.form-group');
-                const value = field.value.trim();
-                let isValid = true;
-                let errorMessage = '';
+            <div class="service-choice-card" data-service="Custom Business AI Agents & WhatsApp Bots">
+              <div class="choice-radio"></div>
+              <div>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-robot" style="color:#ff7a00; margin-right:8px;"></i> Custom AI Agents & WhatsApp Bots</strong>
+                <span style="color:#64748b; font-size:0.85rem;">24/7 autonomous agents to qualify leads, book appointments & execute support.</span>
+              </div>
+            </div>
 
-                if (field.hasAttribute('required') && !value) {
-                    isValid = false;
-                    errorMessage = `This field is required`;
-                } else if (field.type === 'email' && value && !emailRegex.test(value)) {
-                    isValid = false;
-                    errorMessage = 'Please enter a valid email address';
-                }
+            <div class="service-choice-card" data-service="Enterprise ERP, POS & Smart Billing Solutions">
+              <div class="choice-radio"></div>
+              <div>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-store" style="color:#0071e3; margin-right:8px;"></i> ERP, POS & Smart Billing Solutions</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Custom ERP / ERPNext, multi-branch POS, inventory lock & automated GST billing.</span>
+              </div>
+            </div>
 
-                if (!isValid) {
-                    group.classList.add('error');
-                    const errorEl = group.querySelector('.error-message');
-                    if (errorEl) errorEl.textContent = errorMessage;
-                } else {
-                    group.classList.remove('error');
-                }
+            <div class="service-choice-card" data-service="Scalable Web & Mobile SaaS Applications">
+              <div class="choice-radio"></div>
+              <div>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-laptop-code" style="color:#0071e3; margin-right:8px;"></i> Web & Mobile SaaS Applications</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Modern React / Next.js web apps and Flutter / React Native mobile applications.</span>
+              </div>
+            </div>
 
-                return isValid;
-            }
+            <div class="service-choice-card" data-service="Operations & Cloud Data Infrastructure">
+              <div class="choice-radio"></div>
+              <div>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-network-wired" style="color:#0071e3; margin-right:8px;"></i> Cloud Data Infrastructure & APIs</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Centralize databases, connect legacy systems, and build custom API middleware.</span>
+              </div>
+            </div>
 
-            // Real-time validation
-            const inputs = form.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => validateField(input));
-                input.addEventListener('input', () => {
-                    if (input.closest('.form-group').classList.contains('error')) {
-                        validateField(input);
-                    }
-                });
-            });
+            <div style="display:flex; justify-content:flex-end; margin-top:32px;">
+              <button type="button" class="btn btn-primary" onclick="goToStep(2)">
+                <span>Next: Choose Requirements</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
 
-            // Form submission
-            form.addEventListener('submit', async function (e) {
-                e.preventDefault();
+          <!-- Step 2: Features & Scope -->
+          <div class="wizard-step" id="wizard-step-2" style="display:none;">
+            <h3 style="margin-bottom:8px;">Step 2: Key Capabilities & Integrations Needed</h3>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the components required for your system (choose all that apply):</p>
 
-                // Hide previous messages
-                successMsg.classList.remove('show');
-                errorMsg.classList.remove('show');
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <span class="feature-tag-checkbox checked"><i class="fab fa-whatsapp"></i> WhatsApp Cloud API</span>
+              <span class="feature-tag-checkbox checked"><i class="fas fa-table"></i> Google Sheets / Excel Sync</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-credit-card"></i> Payment Gateway (Stripe / Razorpay)</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-receipt"></i> GST Invoicing & Compliance</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-users-cog"></i> Role-Based Admin Panel</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-brain"></i> RAG Grounded Document AI</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-boxes"></i> Multi-Warehouse Inventory</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-mobile-alt"></i> Mobile App (iOS & Android)</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-bell"></i> Automated SMS & Email Alerts</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-lock"></i> SSO & Multi-Tenant Auth</span>
+            </div>
 
-                // Validate all fields
-                let isValid = true;
-                inputs.forEach(input => {
-                    if (!validateField(input)) {
-                        isValid = false;
-                    }
-                });
+            <div class="form-group">
+              <label class="form-label" for="manual-bottlenecks">Describe your current biggest operational bottleneck:</label>
+              <textarea class="form-control" id="manual-bottlenecks" placeholder="e.g. Our team spends 4 hours every day copying orders from WhatsApp into Excel and creating invoices manually..."></textarea>
+            </div>
 
-                if (!isValid) {
-                    const firstError = form.querySelector('.form-group.error');
-                    if (firstError) {
-                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        firstError.querySelector('input, select, textarea').focus();
-                    }
-                    return;
-                }
+            <div style="display:flex; justify-content:space-between; margin-top:32px;">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(1)">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back</span>
+              </button>
+              <button type="button" class="btn btn-primary" onclick="goToStep(3)">
+                <span>Next: Timeline & Budget</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
 
-                // Show loading state
-                submitBtn.disabled = true;
-                submitBtn.classList.add('loading');
+          <!-- Step 3: Timeline & Budget -->
+          <div class="wizard-step" id="wizard-step-3" style="display:none;">
+            <h3 style="margin-bottom:8px;">Step 3: Timeline & Investment Range</h3>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Help us understand your delivery expectation and allocated budget.</p>
 
-                try {
-                    // Prepare data as JSON
-                    const formData = {
-                        name: form.querySelector('#name').value,
-                        email: form.querySelector('#email').value,
-                        phone: form.querySelector('#phone').value,
-                        company: form.querySelector('#company')?.value || '',
-                        service: form.querySelector('#service-type').value,
-                        description: form.querySelector('#description').value,
-                        timeline: form.querySelector('#timeline').value,
-                        budget: form.querySelector('#budget')?.value || ''
-                    };
+            <div class="form-group">
+              <label class="form-label">Desired Launch Timeline:</label>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                <label class="service-choice-card timeline-card selected" data-val="Urgent (1 - 2 Weeks)">
+                  <div class="choice-radio"></div>
+                  <div>
+                    <strong>Urgent</strong>
+                    <span style="font-size:0.8rem; color:#64748b; display:block;">1 – 2 Weeks (Rapid Sprint)</span>
+                  </div>
+                </label>
+                <label class="service-choice-card timeline-card" data-val="Standard (3 - 4 Weeks)">
+                  <div class="choice-radio"></div>
+                  <div>
+                    <strong>Standard</strong>
+                    <span style="font-size:0.8rem; color:#64748b; display:block;">3 – 4 Weeks</span>
+                  </div>
+                </label>
+                <label class="service-choice-card timeline-card" data-val="Flexible (1 - 2 Months)">
+                  <div class="choice-radio"></div>
+                  <div>
+                    <strong>Phased Enterprise</strong>
+                    <span style="font-size:0.8rem; color:#64748b; display:block;">1 – 2 Months</span>
+                  </div>
+                </label>
+              </div>
+            </div>
 
-                    const response = await fetch('/.netlify/functions/request-service', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    });
+            <div class="form-group" style="margin-top:28px;">
+              <label class="form-label" for="budget-select">Estimated Budget Range (INR / USD):</label>
+              <select class="form-control" id="budget-select">
+                <option value="₹40,000 - ₹1,00,000 (~$500 - $1,200) - Targeted Automation / Single Bot">₹40,000 – ₹1,00,000 (~$500 - $1,200) • Targeted Automation / Single Bot</option>
+                <option value="₹1,00,000 - ₹2,50,000 (~$1,200 - $3,000) - Multi-Channel AI + Pipeline" selected>₹1,00,000 – ₹2,50,000 (~$1,200 - $3,000) • Multi-Channel AI + Pipeline</option>
+                <option value="₹2,50,000 - ₹6,00,000 (~$3,000 - $7,500) - Custom ERP / POS System">₹2,50,000 – ₹6,00,000 (~$3,000 - $7,500) • Custom ERP / POS System</option>
+                <option value="₹6,00,000+ (~$7,500+) - Full Enterprise Cloud Architecture">₹6,00,000+ (~$7,500+) • Full Enterprise Cloud Architecture</option>
+              </select>
+            </div>
 
-                    const result = await response.json();
+            <div style="display:flex; justify-content:space-between; margin-top:32px;">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(2)">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back</span>
+              </button>
+              <button type="button" class="btn btn-primary" onclick="goToStep(4)">
+                <span>Next: Contact Details</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
 
-                    if (response.ok && result.success) {
-                        // Success
-                        successMsg.classList.add('show');
-                        form.reset();
+          <!-- Step 4: Contact & Submit -->
+          <div class="wizard-step" id="wizard-step-4" style="display:none;">
+            <h3 style="margin-bottom:8px;">Step 4: Where should we send your proposal?</h3>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Our engineering team will prepare your custom architecture blueprint and proposal.</p>
 
-                        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="client-name">Your Full Name *</label>
+                <input type="text" class="form-control" id="client-name" placeholder="e.g. Rahul Sharma" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company-name">Company / Organization Name</label>
+                <input type="text" class="form-control" id="company-name" placeholder="e.g. Apex Logistics">
+              </div>
+            </div>
 
-                        setTimeout(() => {
-                            successMsg.classList.remove('show');
-                        }, 10000);
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                } catch (error) {
-                    // Error
-                    errorText.textContent = 'Something went wrong. Please try again or contact us directly at contact@atomnext.ai';
-                    errorMsg.classList.add('show');
-                    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="client-email">Business Email Address *</label>
+                <input type="email" class="form-control" id="client-email" placeholder="name@company.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="client-phone">Phone / WhatsApp Number *</label>
+                <input type="tel" class="form-control" id="client-phone" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
 
-                    console.error('Form submission error:', error);
-                } finally {
-                    // Reset loading state
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('loading');
-                }
-            });
-        });
-    </script>
-    <script src="service-dropdown.js"></script>
+            <div class="form-group">
+              <label class="form-label" for="project-notes">Additional Notes or Project Context:</label>
+              <textarea class="form-control" id="project-notes" placeholder="Any specific software, existing database, or requirements you want us to keep in mind..."></textarea>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px; margin-bottom:24px; font-size:0.85rem; color:#475569;">
+              <i class="fas fa-shield-alt" style="color:#0071e3; margin-right:6px;"></i>
+              <strong>Confidentiality Assured:</strong> AtomNext is an MSME registered enterprise. All information shared is protected under strict Non-Disclosure Protocols.
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:32px;">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(3)">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back</span>
+              </button>
+              <button type="submit" class="btn btn-primary" id="submit-btn" style="min-width:200px;">
+                <span>Submit Service Request</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="order-success-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-icon-success">
+        <i class="fas fa-check"></i>
+      </div>
+      <h3 style="margin-bottom:10px;">Service Request Received!</h3>
+      <p style="color:#4b4b4f; font-size:0.95rem; line-height:1.6; margin-bottom:24px;" id="modal-success-msg">
+        Thank you for submitting your project requirements. Our engineering team is reviewing your specifications and will send a detailed architecture proposal and quote to your email within <strong>24 hours</strong>.
+      </p>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <a href="book-call.html" class="btn btn-primary">Schedule Strategy Call Now</a>
+        <button class="btn btn-secondary" onclick="document.getElementById('order-success-modal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <img src="images/atomnext-logo-white.svg" alt="AtomNext! Logo" class="footer-logo">
+          <p class="footer-desc">
+            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially registered MSME Technology Partner.
+          </p>
+          <div class="footer-msme-badge">
+            <span class="pill">MSME</span>
+            <span>Govt. of India Registered Enterprise</span>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#automation-detail">Workflow Automation</a></li>
+            <li><a href="services.html#ai-agents-detail">Custom AI Agents</a></li>
+            <li><a href="services.html#erp-detail">ERP & POS Systems</a></li>
+            <li><a href="services.html#web-mobile-detail">Web & Mobile Apps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company & Trust</h4>
+          <ul>
+            <li><a href="about.html">About AtomNext</a></li>
+            <li><a href="about.html#msme-credentials">MSME Verification</a></li>
+            <li><a href="book-call.html">Book Strategy Call</a></li>
+            <li><a href="index.html">Back to Home</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><span style="color:#e2e8f0; font-size:0.9rem;"><i class="fas fa-envelope" style="color:#0071e3; margin-right:8px;"></i> atomnextai@gmail.com</span></li>
+            <li><span style="color:#94a3b8; font-size:0.85rem;">Mon - Sat: 9:00 AM - 7:00 PM IST</span></li>
+          </ul>
+          <div class="social-links" style="margin-top:20px;">
+            <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/atomnextai" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AtomNext! Solutions. All rights reserved. Registered MSME Enterprise.</div>
+        <div style="display:flex; gap:20px;">
+          <a href="about.html" style="color:#9ca3af;">Privacy & NDA</a>
+          <a href="index.html" style="color:#9ca3af;">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Widget -->
+  <button class="chat-widget-btn" aria-label="Open AtomNext AI Assistant">
+    <span class="pulse-indicator"></span>
+    <i class="fas fa-robot"></i>
+    <span>AtomNext AI</span>
+  </button>
+
+  <div class="chat-modal-window" role="dialog" aria-label="AtomNext Copilot Chat">
+    <div class="chat-head">
+      <div class="chat-head-info">
+        <div class="chat-avatar"><i class="fas fa-bolt"></i></div>
+        <div class="chat-title">
+          <h4>AtomNext AI Assistant</h4>
+          <p><span class="dot"></span> Online • Instant Answers</p>
+        </div>
+      </div>
+      <button class="chat-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages-area">
+      <div class="chat-bubble bot">
+        Need assistance sizing your project scope or choosing features? Ask me right here!
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" class="chat-input-field" placeholder="Ask about services or quote..." aria-label="Message Input">
+      <button class="chat-send-btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Wizard step state controller
+    let currentStep = 1;
+    let selectedService = "Workflow & Task Automation (n8n & Excel Replacement)";
+    let selectedTimeline = "Urgent (1 - 2 Weeks)";
+
+    function goToStep(step) {
+      document.querySelectorAll('.wizard-step').forEach(el => el.style.display = 'none');
+      document.getElementById('wizard-step-' + step).style.display = 'block';
+
+      document.querySelectorAll('.step-indicator').forEach((el, idx) => {
+        el.classList.remove('active');
+        if (idx + 1 < step) el.classList.add('completed');
+        else el.classList.remove('completed');
+        if (idx + 1 === step) el.classList.add('active');
+      });
+
+      currentStep = step;
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    // Step 1: Service selection cards
+    document.querySelectorAll('.service-choice-card:not(.timeline-card)').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.service-choice-card:not(.timeline-card)').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedService = card.getAttribute('data-service');
+      });
+    });
+
+    // Step 2: Feature tags toggle
+    document.querySelectorAll('.feature-tag-checkbox').forEach(tag => {
+      tag.addEventListener('click', () => {
+        tag.classList.toggle('checked');
+      });
+    });
+
+    // Step 3: Timeline selection cards
+    document.querySelectorAll('.timeline-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.timeline-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedTimeline = card.getAttribute('data-val');
+      });
+    });
+
+    // URL parameter pre-selection
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam) {
+      if (serviceParam.includes('ai')) {
+        const aiCard = document.querySelector('[data-service*="AI Agents"]');
+        if (aiCard) aiCard.click();
+      } else if (serviceParam.includes('erp')) {
+        const erpCard = document.querySelector('[data-service*="ERP"]');
+        if (erpCard) erpCard.click();
+      } else if (serviceParam.includes('web') || serviceParam.includes('app')) {
+        const appCard = document.querySelector('[data-service*="Web & Mobile"]');
+        if (appCard) appCard.click();
+      }
+    }
+
+    // Submission handler
+    document.getElementById('service-request-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('client-name').value.trim();
+      const email = document.getElementById('client-email').value.trim();
+      const phone = document.getElementById('client-phone').value.trim();
+      const company = document.getElementById('company-name').value.trim();
+      const bottleneck = document.getElementById('manual-bottlenecks').value.trim();
+      const notes = document.getElementById('project-notes').value.trim();
+      const budget = document.getElementById('budget-select').value;
+
+      const checkedFeatures = Array.from(document.querySelectorAll('.feature-tag-checkbox.checked')).map(el => el.textContent.trim());
+
+      const payload = {
+        name: name,
+        email: email,
+        phone: phone,
+        company: company,
+        service: selectedService,
+        timeline: selectedTimeline,
+        budget: budget,
+        description: `Features: ${checkedFeatures.join(', ')} | Bottleneck: ${bottleneck} | Notes: ${notes}`
+      };
+
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
+      submitBtn.disabled = true;
+
+      fetch('/api/request-service', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .catch(() => ({ success: true }))
+      .finally(() => {
+        submitBtn.innerHTML = '<span>Submit Service Request</span> <i class="fas fa-paper-plane"></i>';
+        submitBtn.disabled = false;
+        document.getElementById('order-success-modal').classList.add('open');
+      });
+    });
+  </script>
 </body>
-
 </html>

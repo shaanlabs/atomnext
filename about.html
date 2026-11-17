@@ -2,330 +2,458 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="AtomNext Solutions - Expert team building scalable SaaS platforms, AI automation, ERP systems, n8n workflows, and custom business software for modern enterprises.">
-    <meta name="keywords"
-        content="AtomNext, AI automation, n8n workflows, SaaS development, ERP systems, business automation, API integrations">
-    <meta name="author" content="AtomNext Solutions">
-    <meta name="robots" content="index, follow">
-    <title>About AtomNext | AI & Automation Experts</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile-first.css">
-    <link rel="stylesheet" href="mobile-sidebar.css">
-    <link rel="stylesheet" href="onboarding.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="About AtomNext! - Think Better. Build Better. Officially registered MSME enterprise specializing in autonomous business systems, custom AI agents, and enterprise software engineering.">
+  <meta name="keywords"
+    content="About AtomNext, MSME registered enterprise, business automation company, AI engineering firm, software systems, Udyam registered">
+  <title>About AtomNext! | Registered MSME Technology Enterprise</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/atomnext-logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" class="logo-link">
-                    <div class="logo-container">
-                        <span class="logo-atom">
-                            <span class="atom-circle"></span>
-                            <span class="atom-orbit">
-                                <span class="electron"></span>
-                            </span>
-                            <span class="atom-orbit" style="transform: rotate(60deg)">
-                                <span class="electron"></span>
-                            </span>
-                            <span class="atom-orbit" style="transform: rotate(-60deg)">
-                                <span class="electron"></span>
-                            </span>
-                        </span>
-                        <div class="logo-text-container">
-                            <span class="logo-text">
-                                <span class="text-atom">Atom</span>
-                                <span class="text-next">Next</span>
-                            </span>
-                            <span class="logo-text-solutions">Solutions</span>
-                            <span class="logo-glowing-line"></span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="nav-items">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="order.html">Request Service</a></li>
-                </ul>
-                <a href="book-call.html" class="btn">Book a Call</a>
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+  <!-- Top MSME Trust Strip -->
+  <aside class="msme-top-strip" aria-label="Official Registration">
+    <div class="container" style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+      <span class="msme-badge-pill"><i class="fas fa-certificate"></i> MSME Registered</span>
+      <span>Official Micro, Small & Medium Enterprise (Govt. of India Recognized)</span>
+      <span class="highlight">• Certified Technology Partner</span>
+      <a href="#msme-credentials">View Legal Credentials &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Sticky Navbar -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container nav-container">
+        <a href="index.html" class="navbar-brand" aria-label="AtomNext Home">
+          <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" class="navbar-logo-img">
+        </a>
+
+        <ul class="navbar-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services & Research</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="order.html">Request Service</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+          <a href="order.html" class="btn btn-sm btn-secondary">Get Estimate</a>
+          <a href="book-call.html" class="btn btn-sm btn-primary">Book a Call</a>
+          <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+      </div>
     </nav>
+  </header>
 
+  <!-- Mobile Drawer -->
+  <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-nav-header">
+      <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height: 32px;">
+      <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;"
+        aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services & Research</a></li>
+      <li><a href="about.html">About & MSME</a></li>
+      <li><a href="order.html">Request Service / Quote</a></li>
+      <li><a href="book-call.html">Book Consultation</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <a href="order.html" class="btn btn-secondary" style="width:100%;">Get Quote</a>
+      <a href="book-call.html" class="btn btn-primary" style="width:100%;">Schedule a Call</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
     <!-- Hero Section -->
-    <section id="about-hero" class="hero" style="min-height: 60vh; padding: 100px 20px 60px;">
-        <div class="container" style="text-align: center;">
-            <h1 class="glowing-text" style="font-size: 3.5em; margin-bottom: 1rem;">
-                About <span class="gradient-text">AtomNext</span>
-            </h1>
-            <p style="font-size: 1.3em; max-width: 700px; margin: 0 auto 2rem; color: rgba(255,255,255,0.85);">
-                Building intelligent systems that scale. AI-driven automation and enterprise software for modern
-                businesses.
+    <section class="hero-section" style="padding: 60px 0 70px;">
+      <div class="container">
+        <div class="hero-content" style="max-width: 840px;">
+          <div class="hero-pill-tag">
+            <i class="fas fa-shield-alt badge-icon"></i>
+            <span>Govt. of India MSME Registered</span>
+            <span class="msme-tag">UDYAM</span>
+            <span>• Think Better. Build Better.</span>
+          </div>
+
+          <h1>
+            We Build Systems Your Business <br>
+            <span class="gradient-blue">Can Depend On Every Day.</span>
+          </h1>
+
+          <p class="hero-subtext">
+            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. We believe
+            high-growth businesses shouldn't be held back by Excel copy-pasting, missed WhatsApp inquiries, and
+            fragmented operations.
+          </p>
+
+          <div class="hero-cta-group" style="margin-bottom:0;">
+            <a href="book-call.html" class="btn btn-primary">Schedule Strategy Call</a>
+            <a href="#msme-credentials" class="btn btn-secondary">Review MSME Credentials</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Philosophy & Story -->
+    <section class="section-wrapper">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+          <div>
+            <span class="section-pill">Our Core Mission</span>
+            <h2 style="margin-bottom:20px;">Why AtomNext Was Built</h2>
+            <p style="margin-bottom:18px; font-size:1.05rem; color:#4b4b4f;">
+              Many businesses today still depend on people doing repetitive tasks — managing data in Excel, replying to
+              messages manually, and handling operations without proper systems. This slows growth and creates mistakes.
             </p>
-        </div>
-    </section>
-
-    <!-- Who We Are -->
-    <section class="services" style="padding: 60px 0;">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Who We Are</h2>
-            <div class="service-box">
-                <div class="service">
-                    <i class="fas fa-rocket service-icon"></i>
-                    <h3>Product-First Company</h3>
-                    <p>We build software products, not just code. Scalable architecture, clean design, long-term
-                        thinking.</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-brain service-icon"></i>
-                    <h3>Automation & AI Driven</h3>
-                    <p>Automate everything. AI agents, n8n workflows, intelligent systems that work while you sleep.</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-chart-line service-icon"></i>
-                    <h3>Built for Scale</h3>
-                    <p>From MVP to enterprise. We architect systems that grow with your business without breaking.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What We Build -->
-    <section class="technologies" style="background: #1a2a3d;">
-        <div class="container">
-            <h2>What We Build</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
-                Production-grade systems for modern businesses
+            <p style="margin-bottom:18px; font-size:1.05rem; color:#4b4b4f;">
+              <strong>AtomNext solves this by building complete business systems that work automatically.</strong> We
+              create solutions that handle your daily operations — from managing data and workflows to automating
+              communication on platforms like WhatsApp and other channels.
             </p>
-            <div class="service-box">
-                <div class="service">
-                    <i class="fas fa-cloud service-icon"></i>
-                    <h3>SaaS Platforms</h3>
-                    <p>Multi-tenant architecture, billing, auth, admin panels</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-network-wired service-icon"></i>
-                    <h3>ERP & ERPNext</h3>
-                    <p>Custom ERP systems, ERPNext implementation & customization</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-users-cog service-icon"></i>
-                    <h3>HRMS & CRM</h3>
-                    <p>Employee management, customer tracking, sales pipelines</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-briefcase service-icon"></i>
-                    <h3>Custom Business Software</h3>
-                    <p>Tailored solutions for unique business requirements</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-robot service-icon"></i>
-                    <h3>AI & Automation Systems</h3>
-                    <p>Intelligent agents, chatbots, workflow automation</p>
-                </div>
-                <div class="service">
-                    <i class="fas fa-bullhorn service-icon"></i>
-                    <h3>Growth & Digital Solutions</h3>
-                    <p>SEO, analytics, marketing automation, performance optimization</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Automation & Integrations -->
-    <section class="process">
-        <div class="container">
-            <h2>Automation & Integrations</h2>
-            <p style="text-align: center; margin-bottom: 50px; color: rgba(255,255,255,0.8);">
-                Connect everything. Automate workflows. Build powerful integrations.
+            <p style="margin-bottom:24px; font-size:1.05rem; color:#4b4b4f;">
+              Our goal is simple: <em>help your business run smoothly, efficiently, and with less manual effort.</em> We
+              don’t just give you software — we build systems your business can depend on.
             </p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number"><i class="fab fa-node-js"></i></div>
-                    <h3>n8n Workflows</h3>
-                    <p>Custom automation workflows, event-driven systems, scheduled tasks, data sync, and intelligent
-                        routing.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-plug"></i></div>
-                    <h3>API Orchestration</h3>
-                    <p>Connect CRMs, ERPs, payment gateways, messaging platforms. Build middleware that just works.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-bolt"></i></div>
-                    <h3>Event-Driven Systems</h3>
-                    <p>Webhooks, pub/sub, message queues. Real-time data processing and reactive architectures.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-cogs"></i></div>
-                    <h3>Internal Automation</h3>
-                    <p>Automate repetitive tasks, data entry, report generation, email campaigns, and business
-                        processes.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-exchange-alt"></i></div>
-                    <h3>Third-Party Integrations</h3>
-                    <p>Stripe, Twilio, SendGrid, Slack, Google Workspace. Connect your entire tech stack.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number"><i class="fas fa-database"></i></div>
-                    <h3>Data Pipelines</h3>
-                    <p>ETL processes, data warehousing, analytics pipelines, and real-time data synchronization.</p>
-                </div>
+            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+              <span class="arch-badge"><i class="fas fa-check-circle"></i> Registered MSME</span>
+              <span class="arch-badge"><i class="fas fa-check-circle"></i> 100% IP Handover</span>
+              <span class="arch-badge"><i class="fas fa-check-circle"></i> Enterprise SLA</span>
             </div>
+          </div>
+
+          <div
+            style="background:#ffffff; border:1px solid #e5e7eb; border-radius:20px; padding:36px; box-shadow:var(--shadow-card);">
+            <div
+              style="display:flex; align-items:center; gap:14px; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid #f1f5f9;">
+              <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height:36px;">
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:18px;">
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div
+                  style="width:36px; height:36px; border-radius:50%; background:#e0f2fe; color:#0071e3; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:1rem; margin-bottom:4px;">1. Think Better</h4>
+                  <p style="font-size:0.88rem; color:#64748b;">We analyze root bottlenecks rather than putting digital
+                    band-aids on broken processes.</p>
+                </div>
+              </div>
+
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div
+                  style="width:36px; height:36px; border-radius:50%; background:#ffedd5; color:#ea580c; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:1rem; margin-bottom:4px;">2. Build Better</h4>
+                  <p style="font-size:0.88rem; color:#64748b;">Clean architecture, zero technical debt, modular
+                    microservices, and rigorous QA testing.</p>
+                </div>
+              </div>
+
+              <div style="display:flex; align-items:flex-start; gap:12px;">
+                <div
+                  style="width:36px; height:36px; border-radius:50%; background:#ecfdf5; color:#10b981; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:1rem; margin-bottom:4px;">3. Scale Autonomous</h4>
+                  <p style="font-size:0.88rem; color:#64748b;">Systems that run 24/7 without requiring you to hire more
+                    staff just to handle basic operations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="team" style="background: #1a2a3d;">
-        <div class="container">
-            <h2>Why Choose AtomNext</h2>
-            <p style="text-align: center; margin-bottom: 50px; color: rgba(255,255,255,0.8);">
-                We're not consultants. We're builders.
+    <!-- MSME Credentials & Verification Section -->
+    <section id="msme-credentials" class="section-wrapper bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pill">Official Credentials</span>
+          <h2 class="section-title">Government Recognized MSME Enterprise</h2>
+          <p class="section-description">
+            AtomNext operates under the regulatory standards and legal framework of the Ministry of Micro, Small &
+            Medium Enterprises, Government of India.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;">
+          <div class="principle-box">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+              <div class="principle-icon" style="margin-bottom:0;"><i class="fas fa-id-card"></i></div>
+              <h4 style="margin-bottom:0;">Udyam Recognized</h4>
+            </div>
+            <p>
+              Registered on the official Udyam portal under the Government of India MSME classification, providing legal
+              standing, verified existence, and formal accountability.
             </p>
-            <div class="team-members" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div class="member" style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6f61, #ff8a7f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Clean Architecture</h3>
-                    <p class="intro">SOLID principles, well-documented code, maintainable systems that don't become
-                        legacy nightmares.</p>
-                </div>
-                <div class="member" style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6f61, #ff8a7f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Scalable Systems</h3>
-                    <p class="intro">Built to handle 10x growth. Microservices, caching, load balancing, database
-                        optimization.</p>
-                </div>
-                <div class="member" style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6f61, #ff8a7f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-                        <i class="fas fa-life-ring"></i>
-                    </div>
-                    <h3>Long-Term Support</h3>
-                    <p class="intro">We stick around. Ongoing maintenance, feature updates, performance monitoring, 24/7
-                        support.</p>
-                </div>
-                <div class="member" style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6f61, #ff8a7f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Security-First</h3>
-                    <p class="intro">OWASP compliance, encryption, secure auth, regular audits. Your data is sacred.</p>
-                </div>
-                <div class="member" style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6f61, #ff8a7f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Business-Focused</h3>
-                    <p class="intro">We understand ROI, conversion rates, customer lifetime value. Tech serves business
-                        goals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- CTA Section -->
-    <section class="contact"
-        style="background: linear-gradient(135deg, rgba(26, 42, 61, 0.95), rgba(15, 52, 96, 0.95)); padding: 80px 20px; position: relative; overflow: hidden;">
-        <div
-            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(255, 111, 97, 0.1) 0%, transparent 70%); pointer-events: none;">
-        </div>
-        <div class="container" style="position: relative; z-index: 1; text-align: center;">
-            <h2 style="font-size: 2.8rem; margin-bottom: 20px;">Ready to Build Something Great?</h2>
-            <p
-                style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.9);">
-                Let's discuss your project. Get a custom proposal within 24 hours.
+          <div class="principle-box">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+              <div class="principle-icon" style="margin-bottom:0; color:#10b981;"><i class="fas fa-file-contract"></i>
+              </div>
+              <h4 style="margin-bottom:0;">Strict Non-Disclosure (NDA)</h4>
+            </div>
+            <p>
+              Every client engagement begins with a legally binding Non-Disclosure Agreement. Your proprietary
+              workflows, customer data, and source codes remain your 100% exclusive property.
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="order.html" class="btn" style="padding: 16px 40px; font-size: 1.2rem;">Request a Quote</a>
-                <a href="book-call.html" class="btn"
-                    style="padding: 16px 40px; font-size: 1.2rem; background: transparent; border: 2px solid #ff6f61;">Book
-                    a Call</a>
+          </div>
+
+          <div class="principle-box">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+              <div class="principle-icon" style="margin-bottom:0; color:#ff7a00;"><i class="fas fa-receipt"></i></div>
+              <h4 style="margin-bottom:0;">GST & Enterprise Invoicing</h4>
             </div>
+            <p>
+              Fully compliant corporate invoicing with GST credit pass-through, clear milestone release schedules, and
+              transparent bank-to-bank settlement.
+            </p>
+          </div>
+
+          <div class="principle-box">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+              <div class="principle-icon" style="margin-bottom:0; color:#8b5cf6;"><i class="fas fa-shield-virus"></i>
+              </div>
+              <h4 style="margin-bottom:0;">OWASP Security Baseline</h4>
+            </div>
+            <p>
+              All software undergoes security auditing for data leakage, encryption in transit, SQL injection
+              resistance, and role-based permissions prior to deployment.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>AtomNext Solutions</h3>
-                    <p>Building intelligent systems that scale</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="order.html">Request Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.instagram.com/atomnextai" target="_blank" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 AtomNext Solutions. All rights reserved.</p>
-            </div>
+    <!-- Engineering & Product Principles -->
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pill">Our Standards</span>
+          <h2 class="section-title">How We Build: The 5 Engineering Tenets</h2>
+          <p class="section-description">
+            The foundational principles that guide every line of code, workflow automation, and ERP system we deploy.
+          </p>
         </div>
-    </footer>
 
-    <script>
-        // Mobile hamburger menu
-        document.querySelector('.hamburger').addEventListener('click', function () {
-            document.querySelector('.nav-items').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        <div class="faq-accordion" style="max-width:900px;">
+          <div class="faq-item open">
+            <button class="faq-question">
+              <span>1. Systems Over Band-Aids</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="max-height:300px;">
+              <p>
+                We do not build fragile quick fixes that break the moment your team volume doubles. We architect
+                resilient systems with proper databases, clear schemas, error handling, and automated recovery queues.
+              </p>
+            </div>
+          </div>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href.length > 1) {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-    </script>
-    <script src="mobile-sidebar.js"></script>
-    <script src="onboarding.js"></script>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>2. Zero Human Latency for Routine Queries</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                If a task can be calculated, retrieved, or answered automatically by an API or AI agent in under 1
+                second, a human employee should not be spending 20 minutes doing it manually.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>3. Total Data Sovereignty</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Your customer lists, transaction logs, and internal operating models are private assets. We ensure zero
+                data leakage to public training sets and full encryption at rest and in transit.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>4. Measurable Return on Investment (ROI)</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Every project we undertake is targeted to save quantifiable hours or generate increased revenue through
+                automated conversions. We measure success by hours recovered and errors eliminated.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>5. Transparent Milestone Delivery</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No black boxes. You get staging links, regular review demos, clear progress logs, and complete
+                documentation so your organization has full confidence in the system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="section-wrapper" style="padding-top:0;">
+      <div class="container">
+        <div class="cta-banner-card">
+          <h2>Partner with a Certified Engineering Team</h2>
+          <p>
+            Whether you want to automate manual spreadsheets, deploy a WhatsApp AI agent, or build an enterprise ERP,
+            AtomNext is ready to deliver.
+          </p>
+          <div class="cta-btn-wrap">
+            <a href="book-call.html" class="btn btn-lg btn-primary">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Book Strategy Call</span>
+            </a>
+            <a href="order.html" class="btn btn-lg btn-secondary" style="background:#ffffff; color:#111827;">
+              <i class="fas fa-file-invoice"></i>
+              <span>Request Project Proposal</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <img src="images/atomnext-logo-white.svg" alt="AtomNext! Logo" class="footer-logo">
+          <p class="footer-desc">
+            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially
+            registered MSME Technology Partner.
+          </p>
+          <div class="footer-msme-badge">
+            <span class="pill">MSME</span>
+            <span>Govt. of India Registered Enterprise</span>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#automation-detail">Workflow Automation</a></li>
+            <li><a href="services.html#ai-agents-detail">Custom AI Agents</a></li>
+            <li><a href="services.html#erp-detail">ERP & POS Systems</a></li>
+            <li><a href="services.html#web-mobile-detail">Web & Mobile Apps</a></li>
+            <li><a href="services.html#data-infra-detail">Data Infrastructure</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company & Trust</h4>
+          <ul>
+            <li><a href="about.html">About AtomNext</a></li>
+            <li><a href="#msme-credentials">MSME Verification</a></li>
+            <li><a href="book-call.html">Book Strategy Call</a></li>
+            <li><a href="order.html">Request a Quote</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><span style="color:#e2e8f0; font-size:0.9rem;"><i class="fas fa-envelope"
+                  style="color:#0071e3; margin-right:8px;"></i> atomnextai@gmail.com</span></li>
+            <li><span style="color:#94a3b8; font-size:0.85rem;">Mon - Sat: 9:00 AM - 7:00 PM IST</span></li>
+          </ul>
+          <div class="social-links" style="margin-top:20px;">
+            <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" rel="noopener noreferrer"
+              class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/atomnextai" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="book-call.html" class="social-link" aria-label="Schedule Call">
+              <i class="fas fa-calendar-check"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 AtomNext! Solutions. All rights reserved. Registered MSME Enterprise.
+        </div>
+        <div style="display:flex; gap:20px;">
+          <a href="about.html" style="color:#9ca3af;">Privacy & NDA</a>
+          <a href="about.html" style="color:#9ca3af;">Terms of Service</a>
+          <a href="index.html" style="color:#9ca3af;">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Widget -->
+  <button class="chat-widget-btn" aria-label="Open AtomNext AI Assistant">
+    <span class="pulse-indicator"></span>
+    <i class="fas fa-robot"></i>
+    <span>AtomNext AI</span>
+  </button>
+
+  <div class="chat-modal-window" role="dialog" aria-label="AtomNext Copilot Chat">
+    <div class="chat-head">
+      <div class="chat-head-info">
+        <div class="chat-avatar"><i class="fas fa-bolt"></i></div>
+        <div class="chat-title">
+          <h4>AtomNext AI Assistant</h4>
+          <p><span class="dot"></span> Online • Instant Answers</p>
+        </div>
+      </div>
+      <button class="chat-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages-area">
+      <div class="chat-bubble bot">
+        Hello! Any questions about AtomNext's MSME registration, engineering standards, or project delivery models? Ask
+        me anything!
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" class="chat-input-field" placeholder="Ask about MSME, process, or standards..."
+        aria-label="Message Input">
+      <button class="chat-send-btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 
 </html>

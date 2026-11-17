@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 100" width="100%" height="100%" fill="none">
+  <!-- Atom Icon Left -->
+  <g transform="translate(10, 8)">
+    <!-- Orbits -->
+    <ellipse cx="42" cy="42" rx="38" ry="16" stroke="#0071E3" stroke-width="2.5" fill="none" opacity="0.85" transform="rotate(-30 42 42)" />
+    <ellipse cx="42" cy="42" rx="38" ry="16" stroke="#1D1D1F" stroke-width="2.5" fill="none" opacity="0.7" transform="rotate(35 42 42)" />
+    <ellipse cx="42" cy="42" rx="38" ry="16" stroke="#86868B" stroke-width="2.2" fill="none" opacity="0.6" transform="rotate(95 42 42)" />
+
+    <!-- Orbital Electrons -->
+    <circle cx="75" cy="24" r="4" fill="#0071E3" />
+    <circle cx="12" cy="54" r="3.5" fill="#FF7A00" />
+    <circle cx="58" cy="74" r="3.5" fill="#1D1D1F" />
+
+    <!-- Central Dynamic A Glyph -->
+    <!-- Orange accent lower right facet -->
+    <path d="M 42 46 L 62 62 L 48 64 Z" fill="#FF7A00" />
+    <!-- White / Primary Dark A Shape -->
+    <path d="M 42 16 L 24 58 L 34 58 L 38 48 L 52 48 L 47 38 L 42 27 Z" fill="#1D1D1F" />
+    <path d="M 38 48 L 56 48 L 64 62 L 54 62 Z" fill="#0071E3" />
+  </g>
+
+  <!-- Typography Right -->
+  <g transform="translate(105, 0)">
+    <!-- Brand Wordmark -->
+    <text x="0" y="44" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5" fill="#1D1D1F">
+      Atom<tspan fill="#0071E3">Next</tspan><tspan fill="#FF7A00">!</tspan>
+    </text>
+
+    <!-- Tagline -->
+    <text x="2" y="64" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif" font-size="12" font-weight="600" letter-spacing="0.5" fill="#86868B">
+      Think Better. Build Better.
+    </text>
+
+    <!-- Micro Pillar Labels -->
+    <text x="2" y="80" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif" font-size="9" font-weight="700" letter-spacing="1.2" fill="#0071E3">
+      IT SERVICES <tspan fill="#FF7A00">•</tspan> AUTOMATION <tspan fill="#FF7A00">•</tspan> AI SOLUTIONS
+    </text>
+  </g>
+</svg>

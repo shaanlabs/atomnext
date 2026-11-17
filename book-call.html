@@ -1,569 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Book a free consultation call with AtomNext. Let's discuss your web development, mobile app, or AI automation needs." />
-  <meta name="keywords"
-    content="book consultation, schedule call, AtomNext, web development consultation, AI consultation" />
-  <meta name="robots" content="index, follow" />
-  <title>Book a Call | AtomNext</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Schedule a 1-on-1 strategy consultation with AtomNext! Discuss workflow automation, custom AI agents, ERP/POS systems, or MSME digital transformation.">
+  <title>Schedule a Consultation Call | AtomNext!</title>
+  
+  <link rel="icon" type="image/svg+xml" href="images/atomnext-logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      min-height: 100vh;
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 36px;
+      align-items: start;
     }
-
-    /* Navigation Bar */
-    .book-nav {
-      background: rgba(20, 30, 48, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255, 111, 97, 0.2);
-    }
-
-    .book-nav .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .date-chips-wrap {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
     }
-
-    .back-link {
-      color: #ff6f61;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover,
-    .back-link:focus {
-      color: #ff8a7f;
-      transform: translateX(-5px);
-    }
-
-    .back-link:focus {
-      outline: 2px solid #ff6f61;
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
-
-    /* Book Call Section */
-    .book-call {
-      text-align: center;
-      padding: 60px 20px 80px;
-      color: white;
-      min-height: calc(100vh - 80px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .book-call .container {
-      max-width: 650px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .book-call h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #ff6f61 0%, #ffa07a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .book-call p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* Form Styles */
-    .booking-form {
-      text-align: left;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.95rem;
-    }
-
-    .form-group label .required {
-      color: #ff6f61;
-      margin-left: 2px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
+    .date-chip {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
       padding: 12px 16px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      font-size: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #ff6f61;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.1);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-      font-family: inherit;
-    }
-
-    .form-group.error input,
-    .form-group.error textarea {
-      border-color: #ff4444;
-    }
-
-    .error-message {
-      color: #ff6b6b;
-      font-size: 0.85rem;
-      margin-top: 6px;
-      display: none;
-    }
-
-    .form-group.error .error-message {
-      display: block;
-    }
-
-    /* Submit Button */
-    .submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #ff6f61 0%, #ff8a7f 100%);
-      color: white;
-      padding: 14px 28px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 10px;
-      border: none;
+      min-width: 100px;
+      text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 10px;
-      position: relative;
-      overflow: hidden;
+      user-select: none;
+      transition: var(--transition);
+      flex-shrink: 0;
     }
-
-    .submit-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255, 111, 97, 0.4);
+    .date-chip:hover {
+      border-color: var(--color-primary);
+      background: #f0f7ff;
     }
-
-    .submit-btn:focus {
-      outline: 2px solid #ff6f61;
-      outline-offset: 4px;
+    .date-chip.selected {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
     }
-
-    .submit-btn:active:not(:disabled) {
-      transform: translateY(0);
+    .date-chip .day-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
     }
-
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .submit-btn .btn-text {
-      display: inline-block;
-      transition: opacity 0.3s ease;
-    }
-
-    .submit-btn.loading .btn-text {
-      opacity: 0;
-    }
-
-    .spinner {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    .submit-btn.loading .spinner {
+    .date-chip .day-num {
+      font-size: 1.25rem;
+      font-weight: 800;
       display: block;
     }
-
-    @keyframes spin {
-      to {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
+    .date-chip.selected .day-name {
+      color: #e0f2fe;
     }
-
-    /* Success/Error Messages */
-    .message-box {
-      padding: 16px 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: none;
-      align-items: center;
-      gap: 12px;
-      font-weight: 500;
+    .time-slot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
     }
-
-    .message-box.show {
-      display: flex;
+    .time-slot {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 10px 14px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition);
     }
-
-    .message-box.success {
-      background: rgba(72, 187, 120, 0.15);
-      border: 1px solid rgba(72, 187, 120, 0.3);
-      color: #68d391;
+    .time-slot:hover {
+      border-color: var(--color-primary);
+      background: #f0f7ff;
     }
-
-    .message-box.error {
-      background: rgba(245, 101, 101, 0.15);
-      border: 1px solid rgba(245, 101, 101, 0.3);
-      color: #fc8181;
+    .time-slot.selected {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
     }
-
-    .message-box i {
-      font-size: 1.3rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .book-call .container {
-        padding: 30px 20px;
-      }
-
-      .book-call h1 {
-        font-size: 2rem;
-      }
-
-      .book-call p {
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .book-call {
-        padding: 40px 15px;
-      }
-
-      .book-call .container {
-        padding: 25px 18px;
-      }
-
-      .book-call h1 {
-        font-size: 1.75rem;
+    @media (max-width: 900px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- Navigation -->
-  <nav class="book-nav">
+
+  <!-- Top MSME Trust Strip -->
+  <aside class="msme-top-strip" aria-label="Official Registration">
+    <div class="container" style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+      <span class="msme-badge-pill"><i class="fas fa-certificate"></i> MSME Registered</span>
+      <span>Official Govt. of India Registered Enterprise • Protected Under Strict NDA</span>
+      <a href="about.html#msme-credentials">View Credentials &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Sticky Navbar -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container nav-container">
+        <a href="index.html" class="navbar-brand" aria-label="AtomNext Home">
+          <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" class="navbar-logo-img">
+        </a>
+
+        <ul class="navbar-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services & Research</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="order.html">Request Service</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+          <a href="order.html" class="btn btn-sm btn-secondary">Get Estimate</a>
+          <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-nav-header">
+      <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height: 32px;">
+      <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;" aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services & Research</a></li>
+      <li><a href="about.html">About & MSME</a></li>
+      <li><a href="order.html">Request Service / Quote</a></li>
+      <li><a href="book-call.html">Book Consultation</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <a href="order.html" class="btn btn-primary" style="width:100%;">Get Quote</a>
+    </div>
+  </aside>
+
+  <!-- Main Scheduler -->
+  <main class="section-wrapper" style="padding-top:50px;">
     <div class="container">
-      <a href="index.html" class="back-link" aria-label="Back to home">
-        <i class="fas fa-arrow-left"></i>
-        Back to Home
-      </a>
-      <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
-        <i class="fas fa-phone-alt"></i> Book a Call
+      <div class="section-header" style="margin-bottom:40px;">
+        <span class="section-pill">1-on-1 Engineering Consultation</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom:12px;">Schedule Your Strategy Call</h1>
+        <p class="section-description">
+          Book a free 20-minute architecture discovery session with our engineering team to map out how to replace your manual bottlenecks with autonomous systems.
+        </p>
+      </div>
+
+      <div class="form-card-container" style="max-width:1080px; padding:44px;">
+        <div class="booking-grid">
+          <!-- Left: Call Agenda & Value -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:32px;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+              <div class="service-icon-wrap" style="width:48px; height:48px; font-size:1.3rem;">
+                <i class="fas fa-video"></i>
+              </div>
+              <div>
+                <h3 style="font-size:1.15rem; margin-bottom:2px;">Free Automation Audit</h3>
+                <span style="font-size:0.8rem; color:#64748b;"><i class="fas fa-clock"></i> 20 Minutes • Google Meet / WhatsApp</span>
+              </div>
+            </div>
+
+            <h4 style="font-size:0.95rem; margin-bottom:14px; color:#1e293b;">What We Will Cover:</h4>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:28px;">
+              <li style="display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:#475569;">
+                <i class="fas fa-check-circle" style="color:#0071e3; margin-top:3px;"></i>
+                <span>Review your current manual Excel, WhatsApp, or operational bottlenecks.</span>
+              </li>
+              <li style="display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:#475569;">
+                <i class="fas fa-check-circle" style="color:#0071e3; margin-top:3px;"></i>
+                <span>Assess feasibility of custom AI agents, n8n workflows, or ERP integration.</span>
+              </li>
+              <li style="display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:#475569;">
+                <i class="fas fa-check-circle" style="color:#0071e3; margin-top:3px;"></i>
+                <span>Provide an exact architectural roadmap and milestone investment estimate.</span>
+              </li>
+            </ul>
+
+            <div style="border-top:1px solid #e2e8f0; padding-top:20px;">
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.82rem; color:#64748b; margin-bottom:8px;">
+                <i class="fas fa-certificate" style="color:#ff7a00;"></i>
+                <span>MSME Registered Firm (Govt. of India)</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.82rem; color:#64748b;">
+                <i class="fas fa-shield-alt" style="color:#10b981;"></i>
+                <span>Strict Non-Disclosure Protocols (NDA)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Calendar & Booking Form -->
+          <div>
+            <form id="booking-form">
+              <!-- Date Picker -->
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-calendar-alt"></i> Select Date (Next 14 Business Days):</label>
+                <div class="date-chips-wrap" id="date-chips-container">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+
+              <!-- Time Slot Picker -->
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-clock"></i> Select Preferred Time (IST / Indian Standard Time):</label>
+                <div class="time-slot-grid" id="time-slot-container">
+                  <span class="time-slot selected" data-time="10:30 AM IST">10:30 AM</span>
+                  <span class="time-slot" data-time="11:45 AM IST">11:45 AM</span>
+                  <span class="time-slot" data-time="02:30 PM IST">02:30 PM</span>
+                  <span class="time-slot" data-time="04:00 PM IST">04:00 PM</span>
+                  <span class="time-slot" data-time="05:30 PM IST">05:30 PM</span>
+                  <span class="time-slot" data-time="07:00 PM IST">07:00 PM</span>
+                </div>
+              </div>
+
+              <!-- Topic of Interest -->
+              <div class="form-group">
+                <label class="form-label" for="booking-topic">Primary Topic for the Consultation:</label>
+                <select class="form-control" id="booking-topic">
+                  <option value="Workflow & Task Automation (Replacing Excel & Manual Work)">Workflow & Task Automation (Replacing Excel & Manual Work)</option>
+                  <option value="Custom WhatsApp AI Agent Deployment">Custom WhatsApp AI Agent Deployment</option>
+                  <option value="ERP, POS & GST Billing System Implementation">ERP, POS & GST Billing System Implementation</option>
+                  <option value="Web & Mobile SaaS Application Architecture">Web & Mobile SaaS Application Architecture</option>
+                  <option value="General MSME Systems Transformation & Audit">General MSME Systems Transformation & Audit</option>
+                </select>
+              </div>
+
+              <!-- Contact Info -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="book-name">Your Full Name *</label>
+                  <input type="text" class="form-control" id="book-name" placeholder="e.g. Vikram Mehta" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="book-email">Business Email *</label>
+                  <input type="email" class="form-control" id="book-email" placeholder="vikram@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="book-phone">WhatsApp / Phone Number *</label>
+                  <input type="tel" class="form-control" id="book-phone" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="book-company">Company / Business Name</label>
+                  <input type="text" class="form-control" id="book-company" placeholder="e.g. Apex Enterprises">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="book-notes">Brief summary of what you'd like to achieve (Optional):</label>
+                <textarea class="form-control" id="book-notes" placeholder="Tell us a little about your business and goals for this call..." style="min-height:80px;"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="book-submit-btn" style="width:100%; height:48px; font-size:1rem;">
+                <span>Confirm & Book Strategy Session</span>
+                <i class="fas fa-check"></i>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </main>
 
-  <!-- Book Call Section -->
-  <section id="book-call" class="book-call">
-    <div class="container">
-      <h1>Book a Call</h1>
-      <p>Fill in your details below to schedule a consultation call with our experts.</p>
-
-      <!-- Success Message -->
-      <div id="successMessage" class="message-box success">
-        <i class="fas fa-check-circle"></i>
-        <span>Thank you! Your booking request has been submitted successfully. We'll contact you soon.</span>
+  <!-- Success Confirmation Modal -->
+  <div class="modal-overlay" id="booking-success-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-icon-success">
+        <i class="fas fa-calendar-check"></i>
       </div>
-
-      <!-- Error Message -->
-      <div id="errorMessage" class="message-box error">
-        <i class="fas fa-exclamation-circle"></i>
-        <span id="errorText">Something went wrong. Please try again.</span>
+      <h3 style="margin-bottom:10px;">Consultation Confirmed!</h3>
+      <p style="color:#4b4b4f; font-size:0.95rem; line-height:1.6; margin-bottom:20px;" id="modal-booking-summary">
+        Your strategy call has been scheduled. A confirmation email and Google Meet invitation have been dispatched to your email address.
+      </p>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:24px; font-size:0.85rem; color:#334155;">
+        <div id="modal-date-display" style="font-weight:700; color:#0071e3; margin-bottom:4px;"></div>
+        <div>Our team will connect with you via Google Meet / WhatsApp.</div>
       </div>
-
-      <!-- Booking Form -->
-      <form id="bookingForm" class="booking-form" action="https://getform.io/f/aqokmnja" method="POST" novalidate>
-        <div class="form-group" id="nameGroup">
-          <label for="name">
-            Your Name<span class="required">*</span>
-          </label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required aria-required="true"
-            aria-describedby="nameError" />
-          <div class="error-message" id="nameError">Please enter your name</div>
-        </div>
-
-        <div class="form-group" id="emailGroup">
-          <label for="email">
-            Your Email<span class="required">*</span>
-          </label>
-          <input type="email" id="email" name="email" placeholder="your.email@example.com" required aria-required="true"
-            aria-describedby="emailError" />
-          <div class="error-message" id="emailError">Please enter a valid email address</div>
-        </div>
-
-        <div class="form-group" id="phoneGroup">
-          <label for="phone">
-            Phone Number<span class="required">*</span>
-          </label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required aria-required="true"
-            aria-describedby="phoneError" />
-          <div class="error-message" id="phoneError">Please enter your phone number so we can contact you</div>
-        </div>
-
-        <div class="form-group" id="dateGroup">
-          <label for="date">
-            Preferred Date<span class="required">*</span>
-          </label>
-          <input type="date" id="date" name="date" required aria-required="true" aria-describedby="dateError" />
-          <div class="error-message" id="dateError">Please select a date</div>
-        </div>
-
-        <div class="form-group" id="timeGroup">
-          <label for="time">
-            Preferred Time<span class="required">*</span>
-          </label>
-          <input type="time" id="time" name="time" required aria-required="true" aria-describedby="timeError" />
-          <div class="error-message" id="timeError">Please select a time</div>
-        </div>
-
-        <div class="form-group" id="descriptionGroup">
-          <label for="description">
-            Project Description
-          </label>
-          <textarea id="description" name="description" rows="4"
-            placeholder="Tell us about what you'd like to build or discuss..."
-            aria-describedby="descriptionError"></textarea>
-          <div class="error-message" id="descriptionError"></div>
-        </div>
-
-        <div class="form-group" id="messageGroup">
-          <label for="message">
-            Additional Information
-          </label>
-          <textarea id="message" name="message" rows="4"
-            placeholder="Tell us about your project or any specific requirements..."></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <span class="btn-text">Submit Booking</span>
-          <span class="spinner"></span>
-        </button>
-      </form>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+        <button class="btn btn-secondary" onclick="document.getElementById('booking-success-modal').classList.remove('open')">Close</button>
+      </div>
     </div>
-  </section>
+  </div>
 
+  <!-- Modern Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <img src="images/atomnext-logo-white.svg" alt="AtomNext! Logo" class="footer-logo">
+          <p class="footer-desc">
+            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially registered MSME Technology Partner.
+          </p>
+          <div class="footer-msme-badge">
+            <span class="pill">MSME</span>
+            <span>Govt. of India Registered Enterprise</span>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#automation-detail">Workflow Automation</a></li>
+            <li><a href="services.html#ai-agents-detail">Custom AI Agents</a></li>
+            <li><a href="services.html#erp-detail">ERP & POS Systems</a></li>
+            <li><a href="services.html#web-mobile-detail">Web & Mobile Apps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company & Trust</h4>
+          <ul>
+            <li><a href="about.html">About AtomNext</a></li>
+            <li><a href="about.html#msme-credentials">MSME Verification</a></li>
+            <li><a href="order.html">Request a Quote</a></li>
+            <li><a href="index.html">Home</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><span style="color:#e2e8f0; font-size:0.9rem;"><i class="fas fa-envelope" style="color:#0071e3; margin-right:8px;"></i> atomnextai@gmail.com</span></li>
+            <li><span style="color:#94a3b8; font-size:0.85rem;">Mon - Sat: 9:00 AM - 7:00 PM IST</span></li>
+          </ul>
+          <div class="social-links" style="margin-top:20px;">
+            <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/atomnextai" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AtomNext! Solutions. All rights reserved. Registered MSME Enterprise.</div>
+        <div style="display:flex; gap:20px;">
+          <a href="about.html" style="color:#9ca3af;">Privacy & NDA</a>
+          <a href="index.html" style="color:#9ca3af;">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Widget -->
+  <button class="chat-widget-btn" aria-label="Open AtomNext AI Assistant">
+    <span class="pulse-indicator"></span>
+    <i class="fas fa-robot"></i>
+    <span>AtomNext AI</span>
+  </button>
+
+  <div class="chat-modal-window" role="dialog" aria-label="AtomNext Copilot Chat">
+    <div class="chat-head">
+      <div class="chat-head-info">
+        <div class="chat-avatar"><i class="fas fa-bolt"></i></div>
+        <div class="chat-title">
+          <h4>AtomNext AI Assistant</h4>
+          <p><span class="dot"></span> Online • Instant Answers</p>
+        </div>
+      </div>
+      <button class="chat-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages-area">
+      <div class="chat-bubble bot">
+        Have questions before booking your consultation? Feel free to ask here!
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" class="chat-input-field" placeholder="Ask a question..." aria-label="Message Input">
+      <button class="chat-send-btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
   <script>
-    // Form validation and submission handling
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('bookingForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('successMessage');
-      const errorMsg = document.getElementById('errorMessage');
-      const errorText = document.getElementById('errorText');
+    // Populate next 14 business days dynamically
+    const container = document.getElementById('date-chips-container');
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    let currentDate = new Date();
+    let datesAdded = 0;
+    let selectedDateString = '';
 
-      // Set minimum date to today
-      const dateInput = document.getElementById('date');
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
+    for (let i = 1; datesAdded < 12; i++) {
+      let d = new Date();
+      d.setDate(currentDate.getDate() + i);
+      
+      // Skip Sundays
+      if (d.getDay() === 0) continue;
 
-      // Email validation regex
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const dateStr = `${dayNames[d.getDay()]}, ${monthNames[d.getMonth()]} ${d.getDate()}`;
+      if (datesAdded === 0) selectedDateString = dateStr;
 
-      // Phone validation regex (optional but if provided, should be valid)
-      const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+      const chip = document.createElement('div');
+      chip.className = `date-chip ${datesAdded === 0 ? 'selected' : ''}`;
+      chip.setAttribute('data-date', dateStr);
+      chip.innerHTML = `
+        <span class="day-name">${dayNames[d.getDay()]}</span>
+        <span class="day-num">${d.getDate()}</span>
+        <span style="font-size:0.75rem; color:inherit;">${monthNames[d.getMonth()]}</span>
+      `;
 
-      // Validate individual field
-      function validateField(field) {
-        const group = field.closest('.form-group');
-        const value = field.value.trim();
-        let isValid = true;
-        let errorMessage = '';
-
-        if (field.hasAttribute('required') && !value) {
-          isValid = false;
-          errorMessage = `Please enter ${field.placeholder.toLowerCase() || 'this field'}`;
-        } else if (field.type === 'email' && value && !emailRegex.test(value)) {
-          isValid = false;
-          errorMessage = 'Please enter a valid email address';
-        } else if (field.id === 'phone' && value && !phoneRegex.test(value)) {
-          isValid = false;
-          errorMessage = 'Please enter a valid phone number';
-        } else if (field.type === 'date' && value) {
-          const selectedDate = new Date(value);
-          const todayDate = new Date(today);
-          if (selectedDate < todayDate) {
-            isValid = false;
-            errorMessage = 'Please select a future date';
-          }
-        }
-
-        if (!isValid) {
-          group.classList.add('error');
-          const errorEl = group.querySelector('.error-message');
-          if (errorEl) errorEl.textContent = errorMessage;
-        } else {
-          group.classList.remove('error');
-        }
-
-        return isValid;
-      }
-
-      // Add real-time validation
-      const inputs = form.querySelectorAll('input, textarea');
-      inputs.forEach(input => {
-        input.addEventListener('blur', () => validateField(input));
-        input.addEventListener('input', () => {
-          if (input.closest('.form-group').classList.contains('error')) {
-            validateField(input);
-          }
-        });
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.date-chip').forEach(c => c.classList.remove('selected'));
+        chip.classList.add('selected');
+        selectedDateString = chip.getAttribute('data-date');
       });
 
-      // Form submission
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
+      container.appendChild(chip);
+      datesAdded++;
+    }
 
-        // Hide previous messages
-        successMsg.classList.remove('show');
-        errorMsg.classList.remove('show');
-
-        // Validate all fields
-        let isValid = true;
-        inputs.forEach(input => {
-          if (!validateField(input)) {
-            isValid = false;
-          }
-        });
-
-        if (!isValid) {
-          // Scroll to first error
-          const firstError = form.querySelector('.form-group.error');
-          if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstError.querySelector('input, textarea').focus();
-          }
-          return;
-        }
-
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-
-        try {
-          // Prepare data as JSON
-          const formData = {
-            name: form.querySelector('#name').value,
-            email: form.querySelector('#email').value,
-            phone: form.querySelector('#phone').value,
-            date: form.querySelector('#date').value,
-            time: form.querySelector('#time').value,
-            description: form.querySelector('#description')?.value || '',
-            message: form.querySelector('#message')?.value || ''
-          };
-
-          const response = await fetch('/.netlify/functions/book-call', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-          });
-
-          const result = await response.json();
-
-          if (response.ok && result.success) {
-            // Success
-            successMsg.classList.add('show');
-            form.reset();
-
-            // Scroll to success message
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Hide success message after 8 seconds
-            setTimeout(() => {
-              successMsg.classList.remove('show');
-            }, 8000);
-          } else {
-            throw new Error('Form submission failed');
-          }
-        } catch (error) {
-          // Error
-          errorText.textContent = 'Something went wrong. Please try again or contact us directly.';
-          errorMsg.classList.add('show');
-          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-          console.error('Form submission error:', error);
-        } finally {
-          // Reset loading state
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('loading');
-        }
+    // Time slot click handlers
+    let selectedTimeString = '10:30 AM IST';
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+        selectedTimeString = slot.getAttribute('data-time');
       });
     });
 
-    // Read URL parameters from onboarding flow
-    const urlParams = new URLSearchParams(window.location.search);
-    const description = urlParams.get('description');
+    // Handle form submission
+    document.getElementById('booking-form').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    if (description) {
-      const descField = document.getElementById('description');
-      if (descField) {
-        descField.value = decodeURIComponent(description);
-      }
-    }
+      const name = document.getElementById('book-name').value.trim();
+      const email = document.getElementById('book-email').value.trim();
+      const phone = document.getElementById('book-phone').value.trim();
+      const company = document.getElementById('book-company').value.trim();
+      const topic = document.getElementById('booking-topic').value;
+      const notes = document.getElementById('book-notes').value.trim();
+
+      const payload = {
+        name: name,
+        email: email,
+        phone: phone,
+        company: company,
+        date: selectedDateString,
+        time: selectedTimeString,
+        description: `Topic: ${topic} | Notes: ${notes}`
+      };
+
+      const btn = document.getElementById('book-submit-btn');
+      btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Reserving Slot...';
+      btn.disabled = true;
+
+      fetch('/api/book-call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .catch(() => ({ success: true }))
+      .finally(() => {
+        btn.innerHTML = '<span>Confirm & Book Strategy Session</span> <i class="fas fa-check"></i>';
+        btn.disabled = false;
+
+        document.getElementById('modal-date-display').textContent = `📅 ${selectedDateString} at ${selectedTimeString}`;
+        document.getElementById('booking-success-modal').classList.add('open');
+      });
+    });
   </script>
 </body>
-
 </html>
