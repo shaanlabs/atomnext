@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Request a service or custom project quote from AtomNext! Autonomous business systems, AI agents, n8n automation, and enterprise ERP software.">
+  <meta name="description"
+    content="Request a service or custom project quote from AtomNext! Autonomous business systems, AI agents, n8n automation, and enterprise ERP software.">
   <title>Request Service & Project Estimator | AtomNext!</title>
-  
+
   <link rel="icon" type="image/svg+xml" href="images/atomnext-logo.svg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
   <style>
     .service-choice-card {
@@ -22,15 +25,18 @@
       transition: var(--transition);
       margin-bottom: 12px;
     }
+
     .service-choice-card:hover {
       border-color: var(--color-primary);
       background: #f8fbff;
     }
+
     .service-choice-card.selected {
       border-color: var(--color-primary);
       background: #eff6ff;
       box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
     }
+
     .choice-radio {
       width: 20px;
       height: 20px;
@@ -41,9 +47,11 @@
       justify-content: center;
       flex-shrink: 0;
     }
+
     .service-choice-card.selected .choice-radio {
       border-color: var(--color-primary);
     }
+
     .service-choice-card.selected .choice-radio::after {
       content: "";
       width: 10px;
@@ -51,6 +59,7 @@
       border-radius: 50%;
       background: var(--color-primary);
     }
+
     .feature-tag-checkbox {
       display: inline-flex;
       align-items: center;
@@ -64,6 +73,7 @@
       user-select: none;
       transition: var(--transition);
     }
+
     .feature-tag-checkbox.checked {
       background: var(--color-primary);
       color: #ffffff;
@@ -71,12 +81,14 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top MSME Trust Strip -->
   <aside class="msme-top-strip" aria-label="Official Registration">
     <div class="container" style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
-      <span class="msme-badge-pill"><i class="fas fa-certificate"></i> MSME Registered</span>
+      <span class="msme-official-pill"><img src="images/msme-gov-logo.webp" alt="MSME Govt. of India"
+          class="msme-gov-img"></span>
       <span>Official Govt. of India Registered Enterprise • Protected Under Formal NDA</span>
       <a href="about.html#msme-credentials">View Credentials &rarr;</a>
     </div>
@@ -87,7 +99,11 @@
     <nav class="navbar" aria-label="Main Navigation">
       <div class="container nav-container">
         <a href="index.html" class="navbar-brand" aria-label="AtomNext Home">
-          <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" class="navbar-logo-img">
+          <img src="images/atomnext-icon-darkink.png" alt="AtomNext! Logo" class="navbar-logo-img">
+          <div class="navbar-brand-text-wrap">
+            <span class="brand-title">Atom<span class="brand-blue">Next</span><span class="brand-orange">!</span></span>
+            <span class="brand-sub">Think Better. Build Better.</span>
+          </div>
         </a>
 
         <ul class="navbar-menu">
@@ -110,8 +126,9 @@
   <!-- Mobile Drawer -->
   <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-nav-header">
-      <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height: 32px;">
-      <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;" aria-label="Close Menu">
+      <img src="images/atomnext-icon-darkink.png" alt="AtomNext! Logo" style="height: 32px;">
+      <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;"
+        aria-label="Close Menu">
         <i class="fas fa-times"></i>
       </button>
     </div>
@@ -134,7 +151,8 @@
         <span class="section-pill">Interactive Project Scope Configurator</span>
         <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom:12px;">Request a Custom System Proposal</h1>
         <p class="section-description">
-          Tell us about your business bottleneck. We will review your requirements, design an architecture blueprint, and send you a custom quote within 24 hours.
+          Tell us about your business bottleneck. We will review your requirements, design an architecture blueprint,
+          and send you a custom quote within 24 hours.
         </p>
       </div>
 
@@ -163,45 +181,57 @@
           <!-- Step 1: Select Service -->
           <div class="wizard-step" id="wizard-step-1">
             <h3 style="margin-bottom:8px;">Step 1: What type of system do you need?</h3>
-            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the primary operational area you want to modernize or automate.</p>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the primary operational area you
+              want to modernize or automate.</p>
 
-            <div class="service-choice-card selected" data-service="Workflow & Task Automation (n8n & Excel Replacement)">
+            <div class="service-choice-card selected"
+              data-service="Workflow & Task Automation (n8n & Excel Replacement)">
               <div class="choice-radio"></div>
               <div>
-                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-bolt" style="color:#0071e3; margin-right:8px;"></i> Workflow & Task Automation</strong>
-                <span style="color:#64748b; font-size:0.85rem;">Eliminate Excel data entry, copy-pasting, n8n automations, and webhook sync.</span>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-bolt"
+                    style="color:#0071e3; margin-right:8px;"></i> Workflow & Task Automation</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Eliminate Excel data entry, copy-pasting, n8n
+                  automations, and webhook sync.</span>
               </div>
             </div>
 
             <div class="service-choice-card" data-service="Custom Business AI Agents & WhatsApp Bots">
               <div class="choice-radio"></div>
               <div>
-                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-robot" style="color:#ff7a00; margin-right:8px;"></i> Custom AI Agents & WhatsApp Bots</strong>
-                <span style="color:#64748b; font-size:0.85rem;">24/7 autonomous agents to qualify leads, book appointments & execute support.</span>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-robot"
+                    style="color:#ff7a00; margin-right:8px;"></i> Custom AI Agents & WhatsApp Bots</strong>
+                <span style="color:#64748b; font-size:0.85rem;">24/7 autonomous agents to qualify leads, book
+                  appointments & execute support.</span>
               </div>
             </div>
 
             <div class="service-choice-card" data-service="Enterprise ERP, POS & Smart Billing Solutions">
               <div class="choice-radio"></div>
               <div>
-                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-store" style="color:#0071e3; margin-right:8px;"></i> ERP, POS & Smart Billing Solutions</strong>
-                <span style="color:#64748b; font-size:0.85rem;">Custom ERP / ERPNext, multi-branch POS, inventory lock & automated GST billing.</span>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-store"
+                    style="color:#0071e3; margin-right:8px;"></i> ERP, POS & Smart Billing Solutions</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Custom ERP / ERPNext, multi-branch POS, inventory lock &
+                  automated GST billing.</span>
               </div>
             </div>
 
             <div class="service-choice-card" data-service="Scalable Web & Mobile SaaS Applications">
               <div class="choice-radio"></div>
               <div>
-                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-laptop-code" style="color:#0071e3; margin-right:8px;"></i> Web & Mobile SaaS Applications</strong>
-                <span style="color:#64748b; font-size:0.85rem;">Modern React / Next.js web apps and Flutter / React Native mobile applications.</span>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-laptop-code"
+                    style="color:#0071e3; margin-right:8px;"></i> Web & Mobile SaaS Applications</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Modern React / Next.js web apps and Flutter / React
+                  Native mobile applications.</span>
               </div>
             </div>
 
             <div class="service-choice-card" data-service="Operations & Cloud Data Infrastructure">
               <div class="choice-radio"></div>
               <div>
-                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-network-wired" style="color:#0071e3; margin-right:8px;"></i> Cloud Data Infrastructure & APIs</strong>
-                <span style="color:#64748b; font-size:0.85rem;">Centralize databases, connect legacy systems, and build custom API middleware.</span>
+                <strong style="color:#1e293b; display:block; font-size:1rem;"><i class="fas fa-network-wired"
+                    style="color:#0071e3; margin-right:8px;"></i> Cloud Data Infrastructure & APIs</strong>
+                <span style="color:#64748b; font-size:0.85rem;">Centralize databases, connect legacy systems, and build
+                  custom API middleware.</span>
               </div>
             </div>
 
@@ -216,12 +246,14 @@
           <!-- Step 2: Features & Scope -->
           <div class="wizard-step" id="wizard-step-2" style="display:none;">
             <h3 style="margin-bottom:8px;">Step 2: Key Capabilities & Integrations Needed</h3>
-            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the components required for your system (choose all that apply):</p>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Select the components required for your
+              system (choose all that apply):</p>
 
             <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
               <span class="feature-tag-checkbox checked"><i class="fab fa-whatsapp"></i> WhatsApp Cloud API</span>
               <span class="feature-tag-checkbox checked"><i class="fas fa-table"></i> Google Sheets / Excel Sync</span>
-              <span class="feature-tag-checkbox"><i class="fas fa-credit-card"></i> Payment Gateway (Stripe / Razorpay)</span>
+              <span class="feature-tag-checkbox"><i class="fas fa-credit-card"></i> Payment Gateway (Stripe /
+                Razorpay)</span>
               <span class="feature-tag-checkbox"><i class="fas fa-receipt"></i> GST Invoicing & Compliance</span>
               <span class="feature-tag-checkbox"><i class="fas fa-users-cog"></i> Role-Based Admin Panel</span>
               <span class="feature-tag-checkbox"><i class="fas fa-brain"></i> RAG Grounded Document AI</span>
@@ -232,8 +264,10 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="manual-bottlenecks">Describe your current biggest operational bottleneck:</label>
-              <textarea class="form-control" id="manual-bottlenecks" placeholder="e.g. Our team spends 4 hours every day copying orders from WhatsApp into Excel and creating invoices manually..."></textarea>
+              <label class="form-label" for="manual-bottlenecks">Describe your current biggest operational
+                bottleneck:</label>
+              <textarea class="form-control" id="manual-bottlenecks"
+                placeholder="e.g. Our team spends 4 hours every day copying orders from WhatsApp into Excel and creating invoices manually..."></textarea>
             </div>
 
             <div style="display:flex; justify-content:space-between; margin-top:32px;">
@@ -251,7 +285,8 @@
           <!-- Step 3: Timeline & Budget -->
           <div class="wizard-step" id="wizard-step-3" style="display:none;">
             <h3 style="margin-bottom:8px;">Step 3: Timeline & Investment Range</h3>
-            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Help us understand your delivery expectation and allocated budget.</p>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Help us understand your delivery
+              expectation and allocated budget.</p>
 
             <div class="form-group">
               <label class="form-label">Desired Launch Timeline:</label>
@@ -283,10 +318,14 @@
             <div class="form-group" style="margin-top:28px;">
               <label class="form-label" for="budget-select">Estimated Budget Range (INR / USD):</label>
               <select class="form-control" id="budget-select">
-                <option value="₹40,000 - ₹1,00,000 (~$500 - $1,200) - Targeted Automation / Single Bot">₹40,000 – ₹1,00,000 (~$500 - $1,200) • Targeted Automation / Single Bot</option>
-                <option value="₹1,00,000 - ₹2,50,000 (~$1,200 - $3,000) - Multi-Channel AI + Pipeline" selected>₹1,00,000 – ₹2,50,000 (~$1,200 - $3,000) • Multi-Channel AI + Pipeline</option>
-                <option value="₹2,50,000 - ₹6,00,000 (~$3,000 - $7,500) - Custom ERP / POS System">₹2,50,000 – ₹6,00,000 (~$3,000 - $7,500) • Custom ERP / POS System</option>
-                <option value="₹6,00,000+ (~$7,500+) - Full Enterprise Cloud Architecture">₹6,00,000+ (~$7,500+) • Full Enterprise Cloud Architecture</option>
+                <option value="₹40,000 - ₹1,00,000 (~$500 - $1,200) - Targeted Automation / Single Bot">₹40,000 –
+                  ₹1,00,000 (~$500 - $1,200) • Targeted Automation / Single Bot</option>
+                <option value="₹1,00,000 - ₹2,50,000 (~$1,200 - $3,000) - Multi-Channel AI + Pipeline" selected>
+                  ₹1,00,000 – ₹2,50,000 (~$1,200 - $3,000) • Multi-Channel AI + Pipeline</option>
+                <option value="₹2,50,000 - ₹6,00,000 (~$3,000 - $7,500) - Custom ERP / POS System">₹2,50,000 – ₹6,00,000
+                  (~$3,000 - $7,500) • Custom ERP / POS System</option>
+                <option value="₹6,00,000+ (~$7,500+) - Full Enterprise Cloud Architecture">₹6,00,000+ (~$7,500+) • Full
+                  Enterprise Cloud Architecture</option>
               </select>
             </div>
 
@@ -305,7 +344,8 @@
           <!-- Step 4: Contact & Submit -->
           <div class="wizard-step" id="wizard-step-4" style="display:none;">
             <h3 style="margin-bottom:8px;">Step 4: Where should we send your proposal?</h3>
-            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Our engineering team will prepare your custom architecture blueprint and proposal.</p>
+            <p style="color:#64748b; font-size:0.92rem; margin-bottom:24px;">Our engineering team will prepare your
+              custom architecture blueprint and proposal.</p>
 
             <div class="form-row">
               <div class="form-group">
@@ -331,12 +371,15 @@
 
             <div class="form-group">
               <label class="form-label" for="project-notes">Additional Notes or Project Context:</label>
-              <textarea class="form-control" id="project-notes" placeholder="Any specific software, existing database, or requirements you want us to keep in mind..."></textarea>
+              <textarea class="form-control" id="project-notes"
+                placeholder="Any specific software, existing database, or requirements you want us to keep in mind..."></textarea>
             </div>
 
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px; margin-bottom:24px; font-size:0.85rem; color:#475569;">
+            <div
+              style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px; margin-bottom:24px; font-size:0.85rem; color:#475569;">
               <i class="fas fa-shield-alt" style="color:#0071e3; margin-right:6px;"></i>
-              <strong>Confidentiality Assured:</strong> AtomNext is an MSME registered enterprise. All information shared is protected under strict Non-Disclosure Protocols.
+              <strong>Confidentiality Assured:</strong> AtomNext is an MSME registered enterprise. All information
+              shared is protected under strict Non-Disclosure Protocols.
             </div>
 
             <div style="display:flex; justify-content:space-between; margin-top:32px;">
@@ -363,11 +406,13 @@
       </div>
       <h3 style="margin-bottom:10px;">Service Request Received!</h3>
       <p style="color:#4b4b4f; font-size:0.95rem; line-height:1.6; margin-bottom:24px;" id="modal-success-msg">
-        Thank you for submitting your project requirements. Our engineering team is reviewing your specifications and will send a detailed architecture proposal and quote to your email within <strong>24 hours</strong>.
+        Thank you for submitting your project requirements. Our engineering team is reviewing your specifications and
+        will send a detailed architecture proposal and quote to your email within <strong>24 hours</strong>.
       </p>
       <div style="display:flex; gap:12px; justify-content:center;">
         <a href="book-call.html" class="btn btn-primary">Schedule Strategy Call Now</a>
-        <button class="btn btn-secondary" onclick="document.getElementById('order-success-modal').classList.remove('open')">Close</button>
+        <button class="btn btn-secondary"
+          onclick="document.getElementById('order-success-modal').classList.remove('open')">Close</button>
       </div>
     </div>
   </div>
@@ -377,12 +422,13 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <img src="images/atomnext-logo-white.svg" alt="AtomNext! Logo" class="footer-logo">
+          <img src="images/atomnext-official-logo.png" alt="AtomNext! Logo" class="footer-logo">
           <p class="footer-desc">
-            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially registered MSME Technology Partner.
+            At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially
+            registered MSME Technology Partner.
           </p>
-          <div class="footer-msme-badge">
-            <span class="pill">MSME</span>
+          <div class="footer-msme-card">
+            <img src="images/msme-gov-logo.webp" alt="MSME Govt. of India" class="footer-msme-img">
             <span>Govt. of India Registered Enterprise</span>
           </div>
         </div>
@@ -410,14 +456,17 @@
         <div class="footer-column">
           <h4>Connect</h4>
           <ul>
-            <li><span style="color:#e2e8f0; font-size:0.9rem;"><i class="fas fa-envelope" style="color:#0071e3; margin-right:8px;"></i> atomnextai@gmail.com</span></li>
+            <li><span style="color:#e2e8f0; font-size:0.9rem;"><i class="fas fa-envelope"
+                  style="color:#0071e3; margin-right:8px;"></i> atomnextai@gmail.com</span></li>
             <li><span style="color:#94a3b8; font-size:0.85rem;">Mon - Sat: 9:00 AM - 7:00 PM IST</span></li>
           </ul>
           <div class="social-links" style="margin-top:20px;">
-            <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/atom-next-ai/" target="_blank" rel="noopener noreferrer"
+              class="social-link" aria-label="LinkedIn">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://www.instagram.com/atomnextai" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <a href="https://www.instagram.com/atomnextai" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
           </div>
@@ -458,7 +507,8 @@
       </div>
     </div>
     <div class="chat-input-row">
-      <input type="text" class="chat-input-field" placeholder="Ask about services or quote..." aria-label="Message Input">
+      <input type="text" class="chat-input-field" placeholder="Ask about services or quote..."
+        aria-label="Message Input">
       <button class="chat-send-btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
@@ -560,14 +610,15 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
-      .then(res => res.json())
-      .catch(() => ({ success: true }))
-      .finally(() => {
-        submitBtn.innerHTML = '<span>Submit Service Request</span> <i class="fas fa-paper-plane"></i>';
-        submitBtn.disabled = false;
-        document.getElementById('order-success-modal').classList.add('open');
-      });
+        .then(res => res.json())
+        .catch(() => ({ success: true }))
+        .finally(() => {
+          submitBtn.innerHTML = '<span>Submit Service Request</span> <i class="fas fa-paper-plane"></i>';
+          submitBtn.disabled = false;
+          document.getElementById('order-success-modal').classList.add('open');
+        });
     });
   </script>
 </body>
+
 </html>

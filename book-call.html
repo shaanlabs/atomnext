@@ -6,7 +6,7 @@
   <meta name="description" content="Schedule a 1-on-1 strategy consultation with AtomNext! Discuss workflow automation, custom AI agents, ERP/POS systems, or MSME digital transformation.">
   <title>Schedule a Consultation Call | AtomNext!</title>
   
-  <link rel="icon" type="image/svg+xml" href="images/atomnext-logo.svg">
+  <link rel="icon" type="image/png" href="images/atomnext-icon-darkink.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -101,8 +101,8 @@
   <!-- Top MSME Trust Strip -->
   <aside class="msme-top-strip" aria-label="Official Registration">
     <div class="container" style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
-      <span class="msme-badge-pill"><i class="fas fa-certificate"></i> MSME Registered</span>
-      <span>Official Govt. of India Registered Enterprise • Protected Under Strict NDA</span>
+      <span class="msme-official-pill"><img src="images/msme-gov-logo.webp" alt="MSME Govt. of India" class="msme-gov-img"></span>
+      <span>Official Govt. of India Registered Enterprise â€¢ Protected Under Strict NDA</span>
       <a href="about.html#msme-credentials">View Credentials &rarr;</a>
     </div>
   </aside>
@@ -112,7 +112,11 @@
     <nav class="navbar" aria-label="Main Navigation">
       <div class="container nav-container">
         <a href="index.html" class="navbar-brand" aria-label="AtomNext Home">
-          <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" class="navbar-logo-img">
+          <img src="images/atomnext-icon-darkink.png" alt="AtomNext! Logo" class="navbar-logo-img">
+          <div class="navbar-brand-text-wrap">
+            <span class="brand-title">Atom<span class="brand-blue">Next</span><span class="brand-orange">!</span></span>
+            <span class="brand-sub">Think Better. Build Better.</span>
+          </div>
         </a>
 
         <ul class="navbar-menu">
@@ -135,7 +139,7 @@
   <!-- Mobile Drawer -->
   <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-nav-header">
-      <img src="images/atomnext-logo.svg" alt="AtomNext! Logo" style="height: 32px;">
+      <img src="images/atomnext-icon-darkink.png" alt="AtomNext! Logo" style="height: 32px;">
       <button class="mobile-nav-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer;" aria-label="Close Menu">
         <i class="fas fa-times"></i>
       </button>
@@ -173,7 +177,7 @@
               </div>
               <div>
                 <h3 style="font-size:1.15rem; margin-bottom:2px;">Free Automation Audit</h3>
-                <span style="font-size:0.8rem; color:#64748b;"><i class="fas fa-clock"></i> 20 Minutes • Google Meet / WhatsApp</span>
+                <span style="font-size:0.8rem; color:#64748b;"><i class="fas fa-clock"></i> 20 Minutes â€¢ Google Meet / WhatsApp</span>
               </div>
             </div>
 
@@ -306,12 +310,12 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <img src="images/atomnext-logo-white.svg" alt="AtomNext! Logo" class="footer-logo">
+          <img src="images/atomnext-official-logo.png" alt="AtomNext! Logo" class="footer-logo">
           <p class="footer-desc">
             At AtomNext!, we help businesses run smarter by replacing manual work with powerful systems. Officially registered MSME Technology Partner.
           </p>
-          <div class="footer-msme-badge">
-            <span class="pill">MSME</span>
+          <div class="footer-msme-card">
+            <img src="images/msme-gov-logo.webp" alt="MSME Govt. of India" class="footer-msme-img">
             <span>Govt. of India Registered Enterprise</span>
           </div>
         </div>
@@ -376,7 +380,7 @@
         <div class="chat-avatar"><i class="fas fa-bolt"></i></div>
         <div class="chat-title">
           <h4>AtomNext AI Assistant</h4>
-          <p><span class="dot"></span> Online • Instant Answers</p>
+          <p><span class="dot"></span> Online â€¢ Instant Answers</p>
         </div>
       </div>
       <button class="chat-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
@@ -478,10 +482,11 @@
         btn.innerHTML = '<span>Confirm & Book Strategy Session</span> <i class="fas fa-check"></i>';
         btn.disabled = false;
 
-        document.getElementById('modal-date-display').textContent = `📅 ${selectedDateString} at ${selectedTimeString}`;
+        document.getElementById('modal-date-display').textContent = `ðŸ“… ${selectedDateString} at ${selectedTimeString}`;
         document.getElementById('booking-success-modal').classList.add('open');
       });
     });
   </script>
 </body>
 </html>
+
