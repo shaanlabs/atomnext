@@ -7,7 +7,9 @@
  * - System Architecture & Research Lab tabs
  * - FAQ Accordion
  * - Interactive AI Assistant (AtomNext Copilot)
- * - Booking & Service Request Modals
+ * - Scroll reveal animations (IntersectionObserver)
+ * - Animated counters
+ * - Smooth scroll
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initArchTabs();
   initFaqAccordion();
   initAiChatbot();
+  initScrollReveal();
+  initCounterAnimation();
+  initSmoothScroll();
+  initNavbarScroll();
 });
 
 /* ==========================================================================
@@ -326,4 +332,112 @@ function formatBotResponse(text) {
   if (typeof text !== 'string') return '';
   // Sanitize first to prevent XSS, then format linebreaks
   return escapeHtml(text).replace(/\n/g, '<br>');
+}
+
+/* ==========================================================================
+   7. Scroll Reveal Animation (IntersectionObserver)
+   ========================================================================== */
+function initScrollReveal() {
+  const revealEls = document.querySelectorAll(
+    '.service-card, .principle-box, .faq-item, .trust-item, ' +
+    '.arch-step, .process-step, .pricing-card, .testimonial-card, ' +
+    '.values-card, .timeline-step'
+  );
+
+  if (!revealEls.length) return;
+
+  // Add base hidden state
+  revealEls.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = `opacity 0.5s ease ${(i % 4) * 0.1}s, transform 0.5s ease ${(i % 4) * 0.1}s`;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   8. Animated Trust Counters
+   ========================================================================== */
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('[data-count-to]');
+  if (!counters.length) return;
+
+  const animate = (el) => {
+    const target = parseFloat(el.getAttribute('data-count-to'));
+    const suffix = el.getAttribute('data-count-suffix') || '';
+    const prefix = el.getAttribute('data-count-prefix') || '';
+    const duration = 1800;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      const display = Number.isInteger(target) ? Math.round(current) : current.toFixed(1);
+      el.textContent = prefix + display + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   9. Smooth Scroll for Anchor Links
+   ========================================================================== */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const navbar = document.querySelector('.navbar');
+        const offset = navbar ? navbar.offsetHeight + 12 : 70;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   10. Navbar scroll state (compact + shadow on scroll)
+   ========================================================================== */
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  const handler = () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', handler, { passive: true });
+  handler();
 }
