@@ -1813,13 +1813,47 @@ textarea.form-control {
   margin: 0 auto 20px;
 }
 
-/* Responsive Media Queries */
+/* ============================================================
+   Layout Utility Classes (mobile-first helpers)
+   ============================================================ */
+
+/* Two-column layout used on about / inner pages */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Three-column principles */
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Hide line-break on small screens so headline reflows naturally */
+@media (max-width: 600px) {
+  br.mobile-hide {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Responsive Media Queries — Full Breakpoint Coverage
+   ============================================================ */
+
+/* ---- Tablet / Narrow Desktop (≤ 1024px) ---- */
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .principles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .three-col-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1836,10 +1870,24 @@ textarea.form-control {
   .arch-grid {
     grid-template-columns: 1fr;
   }
+
+  .section-wrapper {
+    padding: 72px 0;
+  }
+
+  .hero-section {
+    padding: 48px 0 64px;
+  }
+
+  .arch-panel {
+    padding: 28px;
+  }
 }
 
+/* ---- Tablet / Large Mobile (≤ 768px) ---- */
 @media (max-width: 768px) {
 
+  /* Navigation */
   .navbar-menu,
   .navbar-actions .btn-secondary {
     display: none;
@@ -1849,47 +1897,414 @@ textarea.form-control {
     display: block;
   }
 
+  /* Navbar brand — hide sub-tagline on small screens to save space */
+  .brand-sub {
+    display: none;
+  }
+
+  .navbar-logo-img {
+    height: 32px;
+  }
+
+  /* MSME top strip — stack vertically and reduce font */
+  .msme-top-strip {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 0.74rem;
+    text-align: center;
+  }
+
+  .msme-top-strip span,
+  .msme-top-strip a {
+    text-align: center;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 36px 0 56px;
+  }
+
+  .hero-pill-tag {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    gap: 6px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .hero-showcase .showcase-body {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
+    padding: 16px;
   }
 
+  .showcase-header {
+    padding: 10px 16px;
+  }
+
+  .showcase-title {
+    font-size: 0.75rem;
+  }
+
+  /* Trust strip — 2 col on mobile */
   .trust-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 12px;
   }
 
+  .trust-number {
+    font-size: 1.75rem;
+  }
+
+  /* Sections */
+  .section-wrapper {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  /* Services */
   .services-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Two-col and three-col generic grids → single column */
+  .two-col-grid,
+  .three-col-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .services-tabs-nav {
+    gap: 6px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .services-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    padding: 8px 14px;
+  }
+
+  /* Principles */
   .principles-grid {
     grid-template-columns: 1fr;
   }
 
+  /* ROI Calculator */
+  .calc-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .calc-result-panel {
+    padding: 24px;
+  }
+
+  /* Architecture Lab */
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Step indicators — scroll horizontally on mobile */
+  .form-step-indicators {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+
+  .form-step-indicators::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-indicator {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+  }
+
+  .step-indicator span:last-child {
+    display: none;
+  }
+
+  /* Forms */
   .form-row {
     grid-template-columns: 1fr;
   }
 
+  .form-card-container {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  /* CTA Banner */
+  .cta-banner-card {
+    padding: 40px 20px;
+  }
+
+  .cta-btn-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-btn-wrap .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* FAQ */
+  .faq-question {
+    font-size: 0.95rem;
+    padding: 16px 18px;
+  }
+
+  .faq-answer {
+    padding: 0 18px;
+  }
+
+  .faq-item.open .faq-answer {
+    padding: 0 18px 16px;
+  }
+
+  /* Footer */
   .footer-top {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 12px;
   }
 
-  .cta-banner-card {
-    padding: 40px 24px;
+  .footer-logo {
+    height: 48px;
   }
 
-  .calc-container {
-    padding: 24px;
+  footer {
+    padding: 56px 0 32px;
   }
 
+  /* Chat widget — full width on very small screens */
+  .chat-modal-window {
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    bottom: 80px;
+  }
+
+  .chat-widget-btn {
+    right: 16px;
+    bottom: 20px;
+    height: 48px;
+    padding: 0 16px;
+    font-size: 0.85rem;
+  }
+
+  /* Modal */
+  .modal-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ---- Small Mobile (≤ 480px) ---- */
+@media (max-width: 480px) {
+
+  /* Container tighter padding */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Navbar brand — icon only, hide text wordmark */
+  .navbar-brand-text-wrap {
+    display: none;
+  }
+
+  .navbar-logo-img {
+    height: 36px;
+  }
+
+  .navbar {
+    height: 56px;
+  }
+
+  /* MSME strip — single line */
+  .msme-top-strip {
+    font-size: 0.7rem;
+    padding: 8px 12px;
+  }
+
+  .msme-top-strip span:not(:first-child):not(.highlight),
+  .msme-top-strip a {
+    display: none;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 28px 0 48px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  .hero-subtext {
+    font-size: 0.98rem;
+  }
+
+  /* Trust grid — 1 col on tiny screens */
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .trust-number {
+    font-size: 1.5rem;
+  }
+
+  .trust-label {
+    font-size: 0.78rem;
+  }
+
+  /* Sections */
+  .section-wrapper {
+    padding: 44px 0;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  /* Comparison showcase */
+  .comparison-box {
+    padding: 16px;
+  }
+
+  .comp-list li {
+    font-size: 0.85rem;
+  }
+
+  /* Service cards */
+  .service-card {
+    padding: 24px 20px;
+  }
+
+  /* Step indicators — numbers only */
+  .step-indicator span:last-child {
+    display: none;
+  }
+
+  .step-circle {
+    width: 24px;
+    height: 24px;
+    font-size: 0.72rem;
+  }
+
+  /* Forms */
   .form-card-container {
-    padding: 24px;
+    padding: 16px 14px;
+    border-radius: var(--radius-md);
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+  }
+
+  .form-control {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    padding: 10px 14px;
+  }
+
+  /* CTA */
+  .cta-banner-card {
+    padding: 32px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Chat full-screen on tiny screens */
+  .chat-modal-window {
+    right: 0;
+    left: 0;
+    bottom: 70px;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    width: 100%;
+    max-width: 100%;
+    height: 70vh;
+  }
+
+  .chat-widget-btn {
+    right: 12px;
+    bottom: 16px;
+  }
+
+  /* Footer */
+  .footer-top {
+    gap: 24px;
+  }
+
+  .footer-logo {
+    height: 40px;
+  }
+
+  .footer-msme-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ---- Landscape phones (≤ 667px height) ---- */
+@media (max-height: 667px) and (orientation: landscape) {
+  .hero-section {
+    padding: 20px 0 36px;
+  }
+
+  .navbar {
+    height: 52px;
+  }
+
+  .chat-modal-window {
+    height: calc(100vh - 90px);
   }
 }
 
